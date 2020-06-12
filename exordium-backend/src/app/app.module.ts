@@ -1,6 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+// Additions
+//import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+
 // Main Component
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -27,6 +30,7 @@ import { ModUsersDisableComponent } from './_pages/dashboard/moderation/users/mo
 import { ModUsersEditComponent } from './_pages/dashboard/moderation/users/mod-users-edit/mod-users-edit.component';
 import { ModUsersViewComponent } from './_pages/dashboard/moderation/users/mod-users-view/mod-users-view.component';
 import { ModUsersComponent } from './_pages/dashboard/moderation/users/mod-users/mod-users.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -35,6 +39,7 @@ import { ModUsersComponent } from './_pages/dashboard/moderation/users/mod-users
     RegisterComponent,
     ForgottenPassComponent,
     LockedComponent,
+    
     DashboardComponent,
     UserConnectionsComponent,
     UserLogsComponent,
@@ -42,6 +47,7 @@ import { ModUsersComponent } from './_pages/dashboard/moderation/users/mod-users
     UserSecurityComponent,
     UserSessionsComponent,
     UserSettingsComponent,
+
     ModOverviewComponent,
     ModContactComponent,
     ModUsersDisableComponent,
@@ -51,7 +57,8 @@ import { ModUsersComponent } from './_pages/dashboard/moderation/users/mod-users
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
