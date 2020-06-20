@@ -1,12 +1,20 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
-// Additions
-//import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+// Directives
+import { NavbarDirective } from './__directives/navbar.directive';
 
 // Main Component
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
+// RouterOutlet Components
+import { AppAuthModule } from './_pages/auth/app-auth.module';
+import { AppAuthComponent } from './_pages/auth/app-auth.component';
+import { AppDashboardModule } from './_pages/dashboard/app-dashboard.module';
+import { AppDashboardComponent } from './_pages/dashboard/app-dashboard.component';
 
 // Authentication Pages
 import { SigninComponent } from './_pages/auth/signin/signin.component';
@@ -30,11 +38,16 @@ import { ModUsersDisableComponent } from './_pages/dashboard/moderation/users/mo
 import { ModUsersEditComponent } from './_pages/dashboard/moderation/users/mod-users-edit/mod-users-edit.component';
 import { ModUsersViewComponent } from './_pages/dashboard/moderation/users/mod-users-view/mod-users-view.component';
 import { ModUsersComponent } from './_pages/dashboard/moderation/users/mod-users/mod-users.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
+    NavbarDirective,
+
     AppComponent,
+
+    AppAuthComponent,
+    AppDashboardComponent,
+
     SigninComponent,
     RegisterComponent,
     ForgottenPassComponent,
@@ -57,10 +70,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    AppAuthModule,
+    AppDashboardModule,
   ],
-  providers: [],
+  providers: [
+    {
+       provide: LocationStrategy,
+       useClass: HashLocationStrategy,
+     },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
