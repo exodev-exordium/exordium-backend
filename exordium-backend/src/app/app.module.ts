@@ -6,6 +6,9 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 // Directives
 import { NavbarDirective } from './__directives/navbar.directive';
 
+// Injectables
+import { CustomHashLocationStrategy } from './__injectables/customhash.injectable';
+
 // Main Component
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -78,7 +81,7 @@ import { ModUsersComponent } from './_pages/dashboard/moderation/users/mod-users
   providers: [
     {
        provide: LocationStrategy,
-       useClass: HashLocationStrategy,
+       useClass: CustomHashLocationStrategy,
      },
   ],
   bootstrap: [AppComponent]
