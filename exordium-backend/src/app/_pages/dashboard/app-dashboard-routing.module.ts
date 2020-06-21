@@ -11,14 +11,11 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: AppDashboardComponent,
-    data: {
-      title: ''
-    },
     children: [
       {
         path: '',
         component: DashboardComponent,
-        outlet: 'dashboard-route',
+        outlet: 'dashroute',
         data: {
           title: 'Dashboard'
         }
@@ -26,7 +23,7 @@ const routes: Routes = [
       {
         path: 'blog',
         component: BlogComponent,
-        outlet: 'dashboard-route',
+        outlet: 'dashroute',
         data: {
           title: 'Blog'
         }
@@ -34,7 +31,7 @@ const routes: Routes = [
       {
         path: 'network-status',
         component: NetworkStatusComponent,
-        outlet: 'dashboard-route',
+        outlet: 'dashroute',
         data: {
           title: 'Network Status'
         }
