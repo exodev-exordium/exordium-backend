@@ -11,7 +11,9 @@ export class ScrollbarDirective implements OnInit {
     ) { }
 
     ngOnInit(): void {
-        const ps = new PerfectScrollbar(this.elementRef.nativeElement);
+        const ps = new PerfectScrollbar(this.elementRef.nativeElement, {
+            suppressScrollX: true
+        });
     }
 
 }
