@@ -3,8 +3,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
+// External
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+
 // Directives
+import { ScrollbarDirective } from './__directives/perfect-scrollbar.directive';
 import { NavbarDirective } from './__directives/navbar.directive';
+import { TabDirective } from './__directives/tabs.directive';
+import { ThemeSwitchDirective } from './__directives/theme-switch.directive';
+import { SidebarsDirective } from './__directives/sidebars.directive';
 
 // Injectables
 import { CustomHashLocationStrategy } from './__injectables/customhash.injectable';
@@ -44,7 +51,11 @@ import { ModUsersComponent } from './_pages/dashboard/moderation/users/mod-users
 
 @NgModule({
   declarations: [
+    ScrollbarDirective,
     NavbarDirective,
+    TabDirective,
+    ThemeSwitchDirective,
+    SidebarsDirective,
 
     AppComponent,
 
@@ -69,14 +80,18 @@ import { ModUsersComponent } from './_pages/dashboard/moderation/users/mod-users
     ModUsersDisableComponent,
     ModUsersEditComponent,
     ModUsersViewComponent,
-    ModUsersComponent
+    ModUsersComponent,
+
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    
     AppRoutingModule,
     AppAuthModule,
     AppDashboardModule,
+
+    NgxDatatableModule
   ],
   providers: [
     {
