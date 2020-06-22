@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-import PerfectScrollbar from 'perfect-scrollbar';
-
 import $ from 'jquery';
 
 @Component({
@@ -14,53 +12,59 @@ export class AppDashboardComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-        // make the sidebar scroll
-        this.activateScrollbar();
-
-        // toggle the sidebar for mobil
-        this.toggleSidebar();
-
-        // make light/dark theme toggle
-        this.toggleTheme();
+    // toggle the sidebar and aside
+    this.toggleSides();
   }
 
-  activateScrollbar() {
-    const container = document.querySelector('.sidebar-nav');
-    const ps = new PerfectScrollbar(container);
-  }
-
-  toggleSidebar() {
+  toggleSides() {
     const sidebar = $('#sidebar');
-    const toggleButton = $('.nav-toggle');
+    const aside = $('#aside');
     const backdrop = $('.sidebar-backdrop');
 
-    toggleButton.click(() => {
+    const toggleButtonSidebar = $('.sidebar-toggle');
+    const toggleButtonAside = $('.aside-toggle');
+
+    // sidebar toggle
+    toggleButtonSidebar.click(() => {
       if (sidebar.hasClass('sidebar-show')) {
         sidebar.removeClass('sidebar-show');
         backdrop.removeClass('show');
+        $("body").css('overflow', '');
       } else {
         sidebar.addClass('sidebar-show');
         backdrop.addClass('show');
+        $("body").css('overflow', 'hidden');
       }
     });
 
-    backdrop.click(() => {
-      sidebar.removeClass('sidebar-show');
-      backdrop.removeClass('show');
-    });
-  }
-
-  toggleTheme() {
-    const mainApp = $('.app');
-    const toggleButton = $('.theme-toggle');
-
-    toggleButton.click(() => {
-      if (mainApp.hasClass('light-theme')) {
-        mainApp.removeClass('light-theme');
-        mainApp.addClass('dark-theme');
+    // aside toggle
+    toggleButtonAside.click(() => {
+      if (aside.hasClass('sidebar-show')) {
+        aside.removeClass('sidebar-show');
+        backdrop.removeClass('show');
+        $("body").css('overflow', '');
       } else {
-        mainApp.removeClass('dark-theme');
-        mainApp.addClass('light-theme');
+        aside.addClass('sidebar-show');
+        backdrop.addClass('show');
+        $("body").css('overflow', 'hidden');
+      }
+    });
+
+    $(document).on("click", (event) => {
+      if (sidebar.hasClass('sidebar-show')) {
+        if (!$(event.target).closest("#sidebar").length && !$(event.target).closest(".sidebar-toggle").length) {
+          sidebar.removeClass('sidebar-show');
+          backdrop.removeClass('show');
+          $("body").css('overflow', '');
+        }
+      }
+
+      if (aside.hasClass('sidebar-show')) {
+        if (!$(event.target).closest("#aside").length && !$(event.target).closest(".aside-toggle").length) {
+          aside.removeClass('sidebar-show');
+          backdrop.removeClass('show');
+          $("body").css('overflow', '');
+        }
       }
     });
   }
