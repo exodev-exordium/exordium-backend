@@ -172,8 +172,7 @@
     <div class="sidebar sidebar-lg sidebar-light sidebar-right sidebar-overlaid" id="aside">
 
         <!-- close aside button -->
-        <button class="sidebar-close class-toggler" type="button" data-target="_parent" data-class="sidebar-show"
-            responsive="true">
+        <button class="sidebar-close class-toggler" type="button" data-class="sidebar-show">
             <i class="fal fa-times icon"></i>
         </button>
 
@@ -435,7 +434,7 @@
     <div class="wrapper">
         <header class="header header-light header-fixed">
 
-            <button class="sidebar-toggle header-toggler class-toggler d-lg-none mfe-auto" type="button">
+            <button class="sidebar-toggle header-toggler class-toggler d-lg-none mfe-auto" type="button" sidebarhandler>
                 <i class="fal fa-bars icon icon-lg"></i>
             </button>
 
@@ -555,7 +554,7 @@
                 </li>
 
                 <!-- open aside menu -->
-                <button class="aside-toggle header-toggler class-toggler mfe-md-3">
+                <button class="aside-toggle header-toggler class-toggler mfe-md-3" type="button" sidebarhandler>
                     <i class="fas fa-ellipsis-v icon icon-lg"></i>
                 </button>
             </ul>
