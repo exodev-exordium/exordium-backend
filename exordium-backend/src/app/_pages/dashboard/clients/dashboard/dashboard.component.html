@@ -1,1 +1,295 @@
-<p>dashboard works!</p>
+<div class="row">
+
+    <div class="col-sm-4 col-lg-4">
+        <div class="card text-white bg-gradient-primary">
+            <div class="card-body card-body pb-0 d-flex justify-content-between align-items-start">
+                <div>
+                    <div class="text-value-lg">{{totalConnections}}</div>
+                    <div>Total Connections</div>
+                </div>
+            </div>
+            <div class="c-chart-wrapper mt-3" style="height:70px;">
+                <canvas class="chart chartjs-render-monitor" id="totalConnectionsChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-4 col-lg-4">
+        <div class="card text-white bg-gradient-info">
+            <div class="card-body card-body pb-0 d-flex justify-content-between align-items-start">
+                <div>
+                    <div class="text-value-lg">{{totalBandwidth}}TB</div>
+                    <div>Bandwidth Usage</div>
+                </div>
+            </div>
+            <div class="c-chart-wrapper mt-3" style="height:70px;">
+                <canvas class="chart chartjs-render-monitor" id="totalBandwidthChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-4 col-lg-4">
+        <div class="card text-white bg-gradient-success">
+            <div class="card-body card-body pb-0 d-flex justify-content-between align-items-start">
+                <div>
+                    <div class="text-value-lg">{{totalSessions}}</div>
+                    <div>Online Session(s)</div>
+                </div>
+            </div>
+            <div class="c-chart-wrapper mt-3" style="height:70px;">
+                <canvas class="chart chartjs-render-monitor" id="totalSessionsChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="row">
+    <div class="col-md-8">
+        <div class="card card-body card-accent-primary">
+            <!-- tab control -->
+            <ul class="nav nav-tabs nav-underline nav-underline-primary" role="tablist">
+                <!-- blog overview -->
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" data-tab="#blog" href="javascript:;" tab>
+                        <i class="fas fa-blog icon"></i>
+                    </a>
+                </li>
+    
+                <!-- sessions -->
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" data-tab="#sessions" href="javascript:;" tab>
+                        <i class="fas fa-random icon"></i>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- tab content -->
+            <div class="tab-content pt-4" style="height: 500px; position: relative;" perfectScrollbar>
+                <div class="tab-pane email-app active" id="blog" role="tabpanel">
+                    
+                    <div class="messages">
+
+                        <a class="message" href="javascript:;">
+                            <div class="message-details">
+                                <div class="message-headers">
+                                    <div class="message-headers-from">
+                                        <i class="fas fa-badge-check text-primary"></i>
+                                        Gannicus
+                                    </div>
+                                    <div class="message-headers-date">
+                                        <i class="fas fa-history"></i>
+                                        June 20, 2020 at 3:47 PM
+                                    </div>
+                                    <div class="message-headers-subject mt-2">
+                                        Exordium Backend Development
+                                    </div>
+                                </div>
+                                <div class="message-body">
+                                    <p>
+                                        Hey there, welcome to the Exordium backend website. The backend is still in the works, but it looks like you've got a sneak preview. Have a look around, get a feel for the site and let the development team know of your suggestions and recommendations with the design. 
+                                    </p>
+                                    <p>
+                                        You will probably run into glitches and bugs; we are most likely aware of it already and will slowly clear them up and fix them as we get closure to completion. 
+                                    </p>
+            
+                                    <a href="https://github.com/exordium-dev" target="new" class="btn btn-secondary mr-2">
+                                        <i class="fab fa-github"></i>
+                                        Github
+                                    </a>
+                                    <a href="https://discord.exordium.org" target="new" class="btn btn-dark mr-2">
+                                        <i class="fab fa-discord"></i>
+                                        Discord
+                                    </a>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a class="message mt-4" href="javascript:;">
+                            <div class="message-details">
+                                <div class="message-body">
+                                    <i class="fa fa-spinner fa-spin"></i>
+                                    Click here to check out the blog for more development and news updates.
+                                </div>
+                            </div>
+                        </a>
+                        
+                    </div>
+
+                </div>
+                <div class="tab-pane" id="sessions" role="tabpanel">
+                    sessions
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card card-body card-accent-primary">
+
+            <!-- tab control -->
+            <ul class="nav nav-tabs nav-underline nav-underline-primary" role="tablist">
+                <!-- my account -->
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" data-tab="#me" href="javascript:;" tab>
+                        <i class="fas fa-user icon"></i>
+                    </a>
+                </li>
+    
+                <!-- staff -->
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" data-tab="#staff" href="javascript:;" tab>
+                        <i class="fas fa-users icon"></i>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- tab content -->
+            <div class="tab-content pt-4" style="height: 500px; position: relative;" perfectScrollbar>
+                <div class="tab-pane animate__animated animate__faster animate__fadeInRight active" id="me" role="tabpanel">
+                    
+                    <div class="d-flex flex-row mb-3">
+                        <div class="pr-3">
+                            <div class="avatar avatar-lg">
+                                <img class="avatar-img" src="https://github.com/FearGannicus.png?size=72"
+                                    alt="user@email.com">
+                            </div>
+                        </div>
+                        <div class="flex-grow-1 align-self-center">
+                            <h6 class="mb-0">
+                                <i class="fa fa-badge-check text-primary"></i>
+                                Gannicus
+                            </h6>
+                            <span class="badge badge-secondary">
+                                <i class="fa fa-fw fa-user"></i>
+                                User
+                            </span>
+                        </div>
+                    </div>
+
+                    <ul class="list-group">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Quisque hendrerit orci
+                            <span class="badge badge-primary badge-pill">14</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Maecenas dignissim iaculis
+                            <span class="badge badge-primary badge-pill">2</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Aenean ligula neque
+                            <span class="badge badge-primary badge-pill">1</span>
+                        </li>
+                    </ul>
+
+                </div>
+                <div class="tab-pane animate__animated animate__faster animate__fadeInRight" id="staff" role="tabpanel">
+
+                    <h6 class="mb-3">Developers</h6>
+                    
+                    <div class="d-flex flex-row mb-1">
+                        <div class="pr-3">
+                            <div class="avatar avatar-sm">
+                                <img class="avatar-img" src="https://github.com/FearGannicus.png?size=72"
+                                    alt="user@email.com">
+                            </div>
+                        </div>
+                        <div class="flex-grow-1 align-self-center">
+                            <h6 class="mb-0">
+                                <i class="fa fa-badge-check text-primary"></i>
+                                Gannicus
+                            </h6>
+                        </div>
+                        <div>
+                            <span class="badge badge-success">
+                                Online
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="d-flex flex-row mb-1">
+                        <div class="pr-3">
+                            <div class="avatar avatar-sm">
+                                <img class="avatar-img" src="https://github.com/ShuZro.png?size=72"
+                                    alt="user@email.com">
+                            </div>
+                        </div>
+                        <div class="flex-grow-1 align-self-center">
+                            <h6 class="mb-0">
+                                <i class="fa fa-badge-check text-primary"></i>
+                                ShuZro
+                            </h6>
+                        </div>
+                        <div>
+                            <span class="badge badge-danger">
+                                Offline
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="d-flex flex-row mb-1">
+                        <div class="pr-3">
+                            <div class="avatar avatar-sm">
+                                <img class="avatar-img" src="https://github.com/InvalidEm.png?size=72"
+                                    alt="user@email.com">
+                            </div>
+                        </div>
+                        <div class="flex-grow-1 align-self-center">
+                            <h6 class="mb-0">
+                                <i class="fa fa-badge-check text-primary"></i>
+                                Invalid
+                            </h6>
+                        </div>
+                        <div>
+                            <span class="badge badge-danger">
+                                Offline
+                            </span>
+                        </div>
+                    </div>
+
+                    <h6 class="mt-3 mb-3">Moderators</h6>
+
+                    <div class="d-flex flex-row mb-1">
+                        <div class="pr-3">
+                            <div class="avatar avatar-sm">
+                                <img class="avatar-img" src="https://github.com/BradOnDex.png?size=72"
+                                    alt="user@email.com">
+                            </div>
+                        </div>
+                        <div class="flex-grow-1 align-self-center">
+                            <h6 class="mb-0">
+                                <i class="fa fa-star text-warning"></i>
+                                Brad
+                            </h6>
+                        </div>
+                        <div>
+                            <span class="badge badge-danger">
+                                Offline
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="d-flex flex-row mb-1">
+                        <div class="pr-3">
+                            <div class="avatar avatar-sm">
+                                <img class="avatar-img" src="https://github.com/RavenVex.png?size=72"
+                                    alt="user@email.com">
+                            </div>
+                        </div>
+                        <div class="flex-grow-1 align-self-center">
+                            <h6 class="mb-0">
+                                <i class="fa fa-star text-warning"></i>
+                                Raven
+                            </h6>
+                        </div>
+                        <div>
+                            <span class="badge badge-danger">
+                                Offline
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
