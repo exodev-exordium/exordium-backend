@@ -3,7 +3,6 @@ import { Directive, HostListener, ElementRef, Renderer2 } from "@angular/core";
 @Directive({
     selector: '[navbarDropdown]'
 })
-
 export class NavbarDirective {
 
     constructor (
