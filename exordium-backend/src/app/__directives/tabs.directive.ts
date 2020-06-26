@@ -27,14 +27,14 @@ export class TabDirective {
             const newTab = currentTarget.closest('ul').parent().find('.tab-content').find(currentTarget.data('tab'));
 
             // animte the OLD tab out
-            this.animateCSS(oldTab, 'fadeOutLeft').then((message) => {
+            this.animateCSS(oldTab, 'fadeOut').then((message) => {
                 // remove old tab active state
                 oldTab.removeClass('active');
                 newTab.addClass('active');
             });
 
             // animte the NEW tab in
-            this.animateCSS(newTab, 'fadeInRight').then((message) => {
+            this.animateCSS(newTab, 'fadeIn').then((message) => {
             });
         }
 
