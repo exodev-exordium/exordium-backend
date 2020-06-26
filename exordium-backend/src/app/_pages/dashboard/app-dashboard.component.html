@@ -15,27 +15,25 @@
 
             <li class="sidebar-nav-title">Navigation</li>
             <li class="sidebar-nav-item">
-                <a class="sidebar-nav-link" href="javascript:;" routerLink="/dashboard" routerLinkActive="active" skipLocationChange>
+                <a class="sidebar-nav-link" href="javascript:;" routerLink="/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                     <i class="fal fa-laptop sidebar-nav-icon"></i>
                     Dashboard
                 </a>
             </li>
             <li class="sidebar-nav-item">
-                <a class="sidebar-nav-link" href="javascript:;"
-                    [routerLink]="[{ outlets: { dashroute: ['purchase'] } }]" routerLinkActive="active">
+                <a class="sidebar-nav-link" href="javascript:;" routerLink="/dashboard/purchase" routerLinkActive="active">
                     <i class="fal fa-shopping-cart sidebar-nav-icon"></i>
                     Purchase
                 </a>
             </li>
             <li class="sidebar-nav-item">
-                <a class="sidebar-nav-link" href="javascript:;"
-                    [routerLink]="[{ outlets: { dashroute: ['network-status'] } }]" routerLinkActive="active" skipLocationChange>
+                <a class="sidebar-nav-link" href="javascript:;" routerLink="/dashboard/network-status" routerLinkActive="active">
                     <i class="fal fa-server sidebar-nav-icon"></i>
                     Network Status
                 </a>
             </li>
             <li class="sidebar-nav-item">
-                <a class="sidebar-nav-link" href="javascript:;" [routerLink]="[{ outlets: { dashroute: ['blog'] } }]" routerLinkActive="active" skipLocationChange>
+                <a class="sidebar-nav-link" href="javascript:;" routerLink="/dashboard/blog" routerLinkActive="active">
                     <i class="fal fa-blog sidebar-nav-icon"></i>
                     Blog
                 </a>
@@ -596,7 +594,7 @@
 
         <!-- main secondary outlet container -->
         <div class="body">
-            <main class="main">
+            <main class="main animate__animated animate__faster animate__fadeInUp">
                 <div class="container-fluid">
                     <div id="ui-view">
 
