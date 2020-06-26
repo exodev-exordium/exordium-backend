@@ -1,1 +1,131 @@
+<div class="navbar-container">
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-overlay">
+        <div class="container">
+            <a class="navbar-brand fade-page" href="/">
+                <i class="far fa-wifi mr-1"></i>
+                Exordium
+            </a>
+  
+            <div class="d-flex align-items-center order-lg-3">
+              <a href="javascript:;" class="btn btn-primary ml-lg-3" routerLink="/download">Download Now</a>
+  
+              <div class="ml-2">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                  <i class="fal fa-bars icon navbar-toggler-open"></i>
+                  <i class="fal fa-times icon navbar-toggler-close"></i>
+                </button>
+              </div>
+            </div>
+  
+            <div class="collapse navbar-collapse justify-content-end">
+                <div class="py-2 py-lg-0">
+                  <ul class="navbar-nav">
+                    <li class="nav-item">
+                      <a href="javascript:;" class="nav-link" routerLink="/welcome" routerLinkActive="active">
+                        Welcome
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="javascript:;" class="nav-link" routerLink="/company/about-us" routerLinkActive="active">
+                        About
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="javascript:;" class="nav-link" routerLink="/company/contact" routerLinkActive="active">
+                        Contact
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="javascript:;" class="nav-link" class="nav-link" data-toggle="collapse" data-target="#aboutDropdown" aria-controls="aboutDropdown" aria-expanded="false" aria-label="About">
+                        Blog
+                        <i class="fa fa-caret-down"></i>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="javascript:;" class="nav-link" routerLink="/pricing" routerLinkActive="active">
+                        Pricing
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="https://clients.exordium.org/" class="nav-link">
+                        Customers
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+
 <router-outlet name="auth-route"></router-outlet>
+
+<!-- footer -->
+<footer class="bg-primary-3 text-light">
+    <div class="container">
+      <div class="row mb-4 justify-content-center">
+        <div class="col-auto">
+          <a href="/welcome">
+            <i class="fal fa-2x fa-wifi icon icon-lg"></i>
+          </a>
+        </div>
+      </div>
+  
+      <div class="row justify-content-center">
+        <div class="col-auto">
+          <ul class="nav">
+            <li class="nav-item">
+              <a href="/welcome" class="nav-link" routerLink ="/welcome" routerLinkActive="active">Welcome</a>
+            </li>
+            <li class="nav-item">
+              <a href="/company/about-us" class="nav-link" routerLink ="/company/about-us" routerLinkActive="active">About</a>
+            </li>
+            <li class="nav-item">
+              <a href="/company/contact" class="nav-link" routerLink ="/company/contact" routerLinkActive="active">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a href="/general/support" class="nav-link" routerLink ="/general/support" routerLinkActive="active">Support</a>
+            </li>
+            <li class="nav-item">
+              <a href="https://clients.exordium.org/" class="nav-link">Customers</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+  
+      <div class="row justify-content-center mt-5 mb-5">
+        <div class="col-auto">
+          <ul class="nav">
+            <li class="nav-item">
+              <a href="https://www.instagram.com/exordium.dev/" class="nav-link">
+                <i class="fab fa-2x fa-fw fa-instagram icon"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="https://www.facebook.com/exordium.dev/" class="nav-link">
+                <i class="fab fa-2x fa-fw fa-facebook icon"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="https://discord.exordium.dev/" class="nav-link">
+                <i class="fab fa-2x fa-fw fa-discord icon"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="https://github.com/exordium-dev" class="nav-link">
+                <i class="fab fa-2x fa-fw fa-github icon"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+  
+      <div class="row justify-content-center text-center">
+        <div class="col-xl-10">
+          <small class="text-muted">
+            &copy; 2020 All Rights Reserved. Exordium.
+          </small>
+        </div>
+      </div>
+    </div>
+</footer>
