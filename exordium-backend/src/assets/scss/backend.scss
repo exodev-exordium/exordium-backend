@@ -13714,7 +13714,7 @@ html:not([dir=rtl]) .nav {
 .nav-link {
   display: block;
   padding: .5rem 1rem;
-  transition: .2s;
+  transition: 1s;
 
   &:hover, &:focus {
     text-decoration: none;
