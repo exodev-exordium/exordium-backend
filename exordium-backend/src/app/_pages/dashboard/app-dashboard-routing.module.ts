@@ -19,17 +19,29 @@ const routes: Routes = [
         data: {
           title: 'Dashboard'
         }
-      },
+      }
+    ]
+  },
+  {
+    path: 'dashboard/blog',
+    component: AppDashboardComponent,
+    children: [
       {
-        path: 'blog',
+        path: '',
         component: BlogComponent,
         outlet: 'dashroute',
         data: {
           title: 'Blog'
         }
       },
+    ]
+  },
+  {
+    path: 'dashboard/network-status',
+    component: AppDashboardComponent,
+    children: [
       {
-        path: 'network-status',
+        path: '',
         component: NetworkStatusComponent,
         outlet: 'dashroute',
         data: {
@@ -37,7 +49,7 @@ const routes: Routes = [
         }
       },
     ]
-  }
+  },
 ];
 
 @NgModule({
