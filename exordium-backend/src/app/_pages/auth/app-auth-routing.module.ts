@@ -11,7 +11,15 @@ import { LockedComponent } from './locked/locked.component';
 
 const routes: Routes = [
   {
-    path: 'auth',
+    path: '',
+    redirectTo: '/auth/signin',
+    pathMatch: 'full',
+    data: {
+      title: 'Sign in'
+    }
+  },
+  {
+    path: 'auth/signin',
     component: AppAuthComponent,
     data: {
       title: ''
@@ -25,30 +33,57 @@ const routes: Routes = [
           title: 'Sign in'
         }
       },
+    ]
+  },
+  {
+    path: 'auth/register',
+    component: AppAuthComponent,
+    data: {
+      title: ''
+    },
+    children: [
       {
-        path: 'register',
+        path: '',
         component: RegisterComponent,
         outlet: 'auth-route',
         data: {
           title: 'Register'
         }
       },
+    ]
+  },
+  {
+    path: 'auth/forgotten-pass',
+    component: AppAuthComponent,
+    data: {
+      title: ''
+    },
+    children: [
       {
-        path: 'forgotten-pass',
+        path: '',
         component: ForgottenPassComponent,
         outlet: 'auth-route',
         data: {
-          title: 'Forgotten Password?'
+          title: 'Forgotten your password?'
         }
       },
+    ]
+  },
+  {
+    path: 'auth/locked',
+    component: AppAuthComponent,
+    data: {
+      title: ''
+    },
+    children: [
       {
-        path: 'locked',
+        path: '',
         component: LockedComponent,
         outlet: 'auth-route',
         data: {
-          title: 'Session Locked'
+          title: 'Locked out'
         }
-      }
+      },
     ]
   }
 ];
