@@ -2,9 +2,15 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // External
+import { RecaptchaModule, RecaptchaFormsModule, RECAPTCHA_SETTINGS, RecaptchaSettings } from 'ng-recaptcha';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+
+// Services
+import { AuthconfigInterceptor } from './__services/authconfig.interceptor';
 
 // Directives
 import { ScrollbarDirective } from './__directives/perfect-scrollbar.directive';
@@ -12,9 +18,6 @@ import { NavbarDirective } from './__directives/navbar.directive';
 import { TabDirective } from './__directives/tabs.directive';
 import { ThemeSwitchDirective } from './__directives/theme-switch.directive';
 import { SidebarsDirective } from './__directives/sidebars.directive';
-
-// Injectables
-import { CustomHashLocationStrategy } from './__injectables/customhash.injectable';
 
 // Main Component
 import { AppRoutingModule } from './app-routing.module';
@@ -86,6 +89,13 @@ import { ModUsersComponent } from './_pages/dashboard/moderation/users/mod-users
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+
+    HttpClientModule,
+
+    FormsModule,
+    ReactiveFormsModule,
+    RecaptchaModule,
+    RecaptchaFormsModule,
     
     AppRoutingModule,
     AppAuthModule,
@@ -96,8 +106,19 @@ import { ModUsersComponent } from './_pages/dashboard/moderation/users/mod-users
   providers: [
     {
        provide: LocationStrategy,
-       useClass: CustomHashLocationStrategy,
-     },
+       useClass: HashLocationStrategy,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthconfigInterceptor,
+      multi: true
+    },
+    {
+      provide: RECAPTCHA_SETTINGS,
+      useValue: {
+        siteKey: '6LeB5uIUAAAAAMQWnwCUpUHbdsHO4iV4emdn9KOL'
+      } as RecaptchaSettings,
+    },
   ],
   bootstrap: [AppComponent]
 })
