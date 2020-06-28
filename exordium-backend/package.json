@@ -19,6 +19,8 @@
     "@angular/platform-browser": "~9.1.0",
     "@angular/platform-browser-dynamic": "~9.1.0",
     "@angular/router": "~9.1.0",
+    "@exordium/scss-backend": "0.0.1",
+    "@exordium/scss-frontend": "0.0.3",
     "@swimlane/ngx-datatable": "^17.0.0",
     "bootstrap": "4.3.1",
     "chart.js": "^2.9.3",
