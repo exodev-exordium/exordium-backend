@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // External
 import { RecaptchaModule, RecaptchaFormsModule, RECAPTCHA_SETTINGS, RecaptchaSettings } from 'ng-recaptcha';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { ToastrModule } from 'ngx-toastr';
 
 // Services
 import { AuthconfigInterceptor } from './__services/authconfig.interceptor';
@@ -101,7 +102,11 @@ import { ModUsersComponent } from './_pages/dashboard/moderation/users/mod-users
     AppAuthModule,
     AppDashboardModule,
 
-    NgxDatatableModule
+    NgxDatatableModule,
+    ToastrModule.forRoot({
+      timeOut: 10000,
+      positionClass: 'toast-bottom-right'
+    })
   ],
   providers: [
     {
