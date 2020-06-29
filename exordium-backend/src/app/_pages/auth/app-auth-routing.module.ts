@@ -14,24 +14,18 @@ const routes: Routes = [
     path: '',
     redirectTo: '/auth/signin',
     pathMatch: 'full',
-    data: {
-      title: 'Sign in'
-    }
   },
   {
     path: 'auth/signin',
     component: AppAuthComponent,
     data: {
-      title: ''
+      title: 'Sign in'
     },
     children: [
       {
         path: '',
         component: SigninComponent,
-        outlet: 'auth-route',
-        data: {
-          title: 'Sign in'
-        }
+        outlet: 'auth-route'
       },
     ]
   },
@@ -39,16 +33,13 @@ const routes: Routes = [
     path: 'auth/register',
     component: AppAuthComponent,
     data: {
-      title: ''
+      title: 'Register'
     },
     children: [
       {
         path: '',
         component: RegisterComponent,
-        outlet: 'auth-route',
-        data: {
-          title: 'Register'
-        }
+        outlet: 'auth-route'
       },
     ]
   },
@@ -56,16 +47,13 @@ const routes: Routes = [
     path: 'auth/forgotten-pass',
     component: AppAuthComponent,
     data: {
-      title: ''
+      title: 'Forgotten Password?'
     },
     children: [
       {
         path: '',
         component: ForgottenPassComponent,
-        outlet: 'auth-route',
-        data: {
-          title: 'Forgotten your password?'
-        }
+        outlet: 'auth-route'
       },
     ]
   },
@@ -73,16 +61,13 @@ const routes: Routes = [
     path: 'auth/locked',
     component: AppAuthComponent,
     data: {
-      title: ''
+      title: 'Locked out'
     },
     children: [
       {
         path: '',
         component: LockedComponent,
-        outlet: 'auth-route',
-        data: {
-          title: 'Locked out'
-        }
+        outlet: 'auth-route'
       },
     ]
   }

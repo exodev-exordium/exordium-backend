@@ -10,6 +10,7 @@ export class AppAuthComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
 }
