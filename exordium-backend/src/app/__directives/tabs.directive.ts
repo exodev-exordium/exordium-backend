@@ -26,16 +26,19 @@ export class TabDirective {
             // what should the new tab be?
             const newTab = currentTarget.closest('ul').parent().find('.tab-content').find(currentTarget.data('tab'));
 
-            // animte the OLD tab out
-            this.animateCSS(oldTab, 'fadeOut').then((message) => {
-                // remove old tab active state
-                oldTab.removeClass('active');
-                newTab.addClass('active');
-            });
+            if (newTab.length !== 0) {
+                // animte the OLD tab out
+                this.animateCSS(oldTab, 'fadeOut').then((message) => {
+                    // remove old tab active state
+                    oldTab.removeClass('active');
+                    newTab.addClass('active');
+                });
 
-            // animte the NEW tab in
-            this.animateCSS(newTab, 'fadeIn').then((message) => {
-            });
+                // animte the NEW tab in
+                this.animateCSS(newTab, 'fadeIn').then((message) => {
+                });
+            }
+
         }
 
         event.preventDefault();
