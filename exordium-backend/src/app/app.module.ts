@@ -9,6 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RecaptchaModule, RecaptchaFormsModule, RECAPTCHA_SETTINGS, RecaptchaSettings } from 'ng-recaptcha';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { ToastrModule } from 'ngx-toastr';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 // Services
 import { AuthconfigInterceptor } from './__services/authconfig.interceptor';
@@ -103,6 +104,7 @@ import { ModUsersComponent } from './_pages/dashboard/moderation/users/mod-users
     AppDashboardModule,
 
     NgxDatatableModule,
+    NgSelectModule,
     ToastrModule.forRoot({
       timeOut: 10000,
       positionClass: 'toast-bottom-right'
