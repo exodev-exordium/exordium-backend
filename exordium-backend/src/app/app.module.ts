@@ -14,6 +14,9 @@ import { NgSelectModule } from '@ng-select/ng-select';
 // Services
 import { AuthconfigInterceptor } from './__services/authconfig.interceptor';
 
+// General Components
+import { NotyfToast } from './_components/notyf.toast';
+
 // Directives
 import { ScrollbarDirective } from './__directives/perfect-scrollbar.directive';
 import { NavbarDirective } from './__directives/navbar.directive';
@@ -56,6 +59,8 @@ import { ModUsersComponent } from './_pages/dashboard/moderation/users/mod-users
 
 @NgModule({
   declarations: [
+    NotyfToast,
+
     ScrollbarDirective,
     NavbarDirective,
     TabDirective,
@@ -106,9 +111,13 @@ import { ModUsersComponent } from './_pages/dashboard/moderation/users/mod-users
     NgxDatatableModule,
     NgSelectModule,
     ToastrModule.forRoot({
-      timeOut: 10000,
+      toastComponent: NotyfToast,
+      timeOut: 6000,
       positionClass: 'toast-bottom-right'
     })
+  ],
+  entryComponents: [
+    NotyfToast
   ],
   providers: [
     {
