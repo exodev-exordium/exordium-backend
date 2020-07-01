@@ -21,6 +21,7 @@
     "@angular/router": "~9.1.11",
     "@exordium/scss-backend": "0.0.1",
     "@exordium/scss-frontend": "0.0.12",
+    "@exordium/scss-plugins": "0.0.8",
     "@ng-select/ng-select": "^4.0.1",
     "@swimlane/ngx-datatable": "^17.0.0",
     "bootstrap": "4.3.1",
