@@ -60,18 +60,17 @@ export class RegisterComponent implements OnInit {
     if (this.registerForm.invalid) {
       this.toastr.error('Please make sure you fill out all the fields correctly, then creating your account again...');
     } else {
-      this.authService.signin(this.registerForm.value).subscribe((res) => {
-        this.toastr.success('Your account has been successfully created, you\'re free to login now!');
+      this.authService.register(this.registerForm.value).subscribe((res) => {
+        if (res.result) {
+          this.registerForm.reset();
+          this.router.navigate([`auth/signin`]);
 
-        localStorage.setItem('access_token', res.token);
-
-        this.userService.getUserDataBasic().subscribe((res) => {
-          this.router.navigate([`/auth/signin`]);
-        });
-      }, (err) => {
+          this.toastr.success("Your account has been successfully created, you're free to login now!");
+        }
+      },
+      (err) => {
         this.toastr.success(err[0].msg);
       });
-
     }
 
     setTimeout(() => {
