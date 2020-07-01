@@ -1,2 +1,11 @@
-/* package theming */
-@import "~@exordium/scss-frontend/src/theme.scss";
+@import "assets/scss/backend";
+
+
+// import frotend LITE edition for the authentication pages
+//@import "~@exordium/scss-frontend/src/theme.scss";
+
+// import backend
+//@import "~@exordium/scss-backend/src/theme.scss";
+
+// import general plugins for both the frontend lite design and backend design
+@import "~@exordium/scss-plugins/src/plugins.scss";
