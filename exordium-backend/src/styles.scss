@@ -1,11 +1,38 @@
+
+
 @import "assets/scss/backend";
-
-
-// import frotend LITE edition for the authentication pages
-//@import "~@exordium/scss-frontend/src/theme.scss";
 
 // import backend
 //@import "~@exordium/scss-backend/src/theme.scss";
 
+// import frotend LITE edition for the authentication pages
+@import "~@exordium/scss-frontend/src/theme-lite.scss";
+
 // import general plugins for both the frontend lite design and backend design
 @import "~@exordium/scss-plugins/src/plugins.scss";
+
+// import some overwrites
+app-app-auth {
+    .breadcrumb {
+        border-bottom: 0 !important;
+    }
+}
+app-app-dashboard {
+    font-size: 0.875rem;
+
+    a {
+        font-weight: 400 !important;
+    }
+
+    .breadcrumb {
+        display: inline-flex;
+        font-weight: 400;
+    }
+
+    .btn {
+        font-size: 0.875rem;
+    }
+    .badge {
+        font-size: 75%;
+    }
+}
