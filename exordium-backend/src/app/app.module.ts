@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
@@ -10,6 +10,9 @@ import { RecaptchaModule, RecaptchaFormsModule, RECAPTCHA_SETTINGS, RecaptchaSet
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { ToastrModule } from 'ngx-toastr';
 import { NgSelectModule } from '@ng-select/ng-select';
+
+import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
+import { LoadingBarModule } from '@ngx-loading-bar/core';
 
 // Services
 import { AuthconfigInterceptor } from './__services/authconfig.interceptor';
@@ -103,6 +106,9 @@ import { ModUsersComponent } from './_pages/dashboard/moderation/users/mod-users
     ReactiveFormsModule,
     RecaptchaModule,
     RecaptchaFormsModule,
+
+    LoadingBarRouterModule,
+    LoadingBarModule,
     
     AppRoutingModule,
     AppAuthModule,
@@ -114,7 +120,7 @@ import { ModUsersComponent } from './_pages/dashboard/moderation/users/mod-users
       toastComponent: NotyfToast,
       timeOut: 6000,
       positionClass: 'toast-bottom-right'
-    })
+    }),
   ],
   entryComponents: [
     NotyfToast
@@ -136,6 +142,9 @@ import { ModUsersComponent } from './_pages/dashboard/moderation/users/mod-users
       } as RecaptchaSettings,
     },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [ 
+    CUSTOM_ELEMENTS_SCHEMA
+  ]
 })
 export class AppModule { }
