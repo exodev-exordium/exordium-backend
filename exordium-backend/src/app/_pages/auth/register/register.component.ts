@@ -53,7 +53,7 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(): void {
-    const srcButton = $('submitRegister');
+    const srcButton = $('.submitRegister');
     srcButton.attr('disabled', true);
     srcButton.addClass('m-progress');
 
