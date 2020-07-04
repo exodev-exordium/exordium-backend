@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Event, Router, NavigationStart, NavigationEnd, NavigationCancel, NavigationError } from '@angular/router';
+import { Router, NavigationEnd, NavigationStart } from '@angular/router';
 import { Title } from '@angular/platform-browser';
+import { filter, map } from 'rxjs/operators';
+
+import { LoadingBarService } from '@ngx-loading-bar/core';
 
 @Component({
   selector: 'app-root',
@@ -8,37 +11,38 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+  loader = this.loadingBar.useRef();
 
   constructor (
     private router: Router,
-    private titleService: Title
+    private titleService: Title,
+    private loadingBar: LoadingBarService
   ) { }
 
   ngOnInit(): void {
-    this.router.events.subscribe((event: Event) => {
-      switch (true) {
-        case event instanceof NavigationStart: {}
-        case event instanceof NavigationEnd: {
-          const title = this.getTitle(this.router.routerState, this.router.routerState.root).join(' - ');
-          this.titleService.setTitle(`Exordium - ${title}`);
 
-          setTimeout(() => {
-            document.querySelector('body').classList.add('loaded');
-          }, 1000);
-        }
-        case event instanceof NavigationCancel: {}
-        case event instanceof NavigationError: {
-          setTimeout(() => {
-            document.querySelector('body').classList.add('loaded');
-          }, 1000);
-
-          break;
-        }
-        default: {
-          break;
-        }
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationStart) {
+        this.loader.start();
       }
+
+      if (event instanceof NavigationEnd) {
+        const title = this.getTitle(this.router.routerState, this.router.routerState.root).join(' - ');
+        this.titleService.setTitle(`Exordium - ${title}`);
+
+        setTimeout(() => {
+          this.loader.complete();
+        }, 2000);
+      }
+
     });
+
+  }
+
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      document.querySelector('body').classList.add('loaded');
+    }, 1000);
   }
 
   getTitle(state, parent) {
