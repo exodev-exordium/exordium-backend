@@ -39,21 +39,27 @@
                 </a>
             </li>
 
-            <li class="sidebar-nav-title">Moderation</li>
-            <li class="sidebar-nav-dropdown" navbarDropdown>
+            <li class="sidebar-nav-title" *ngIf="management">Management</li>
+            <li class="sidebar-nav-item" *ngIf="management && checkAccessPage(this.currentUser.access.pages, 'page', 'staff-watchdog')">
+                <a class="sidebar-nav-link" href="javascript:;" routerLink="/dashboard/staff/watchdog" routerLinkActive="active">
+                    <i class="fal fa-eye sidebar-nav-icon"></i>
+                    Watchdog
+                </a>
+            </li>
+            <li class="sidebar-nav-dropdown" *ngIf="management" navbarDropdown>
                 <a class="sidebar-nav-dropdown-toggle" href="javascript:;">
                     <i class="fal fa-life-ring sidebar-nav-icon"></i>
                     Support
                 </a>
                 <ul class="sidebar-nav-dropdown-items">
-                    <li class="sidebar-nav-item">
-                        <a class="sidebar-nav-link" href="/">
+                    <li class="sidebar-nav-item" *ngIf="checkAccessPage(this.currentUser.access.pages, 'page', 'live-support')">
+                        <a class="sidebar-nav-link" href="https://tawk.to" target="new">
                             <i class="fal fa-headset sidebar-nav-icon"></i>
                             Live Support
                         </a>
                     </li>
-                    <li class="sidebar-nav-item">
-                        <a class="sidebar-nav-link" href="/">
+                    <li class="sidebar-nav-item" *ngIf="checkAccessPage(this.currentUser.access.pages, 'page', 'contact')">
+                        <a class="sidebar-nav-link" href="javascript:;" routerLink="/dashboard/staff/contact" routerLinkActive="active">
                             <i class="fal fa-inbox sidebar-nav-icon"></i>
                             Contact Requests
                         </a>
@@ -61,25 +67,54 @@
                 </ul>
             </li>
 
-            <li class="sidebar-nav-dropdown" navbarDropdown>
+            <li class="sidebar-nav-dropdown" *ngIf="management" navbarDropdown>
                 <a class="sidebar-nav-dropdown-toggle" href="javascript:;">
                     <i class="fal fa-users sidebar-nav-icon"></i>
                     Users
                 </a>
                 <ul class="sidebar-nav-dropdown-items">
-                    <li class="sidebar-nav-item">
+                    <li class="sidebar-nav-item" *ngIf="checkAccessPage(this.currentUser.access.pages, 'page', 'users-overview')">
+                        <a class="sidebar-nav-link" href="javascript:;" routerLink="/dashboard/mod/users" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                            <i class="fal fa-search sidebar-nav-icon"></i>
+                            Overview
+                        </a>
+                    </li>
+                    <li class="sidebar-nav-item" *ngIf="checkAccessPage(this.currentUser.access.pages, 'page', 'users-add')">
+                        <a class="sidebar-nav-link" href="javascript:;" routerLink="/dashboard/mod/users/add" routerLinkActive="active">
+                            <i class="fal fa-user-plus sidebar-nav-icon"></i>
+                            Add New
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="sidebar-nav-dropdown" *ngIf="management" navbarDropdown>
+                <a class="sidebar-nav-dropdown-toggle" href="javascript:;">
+                    <i class="fal fa-comments sidebar-nav-icon"></i>
+                    Blog Posts
+                </a>
+                <ul class="sidebar-nav-dropdown-items">
+                    <li class="sidebar-nav-item" *ngIf="checkAccessPage(this.currentUser.access.pages, 'page', 'blog-overview')">
                         <a class="sidebar-nav-link" href="/">
                             <i class="fal fa-search sidebar-nav-icon"></i>
                             Overview
                         </a>
                     </li>
-                    <li class="sidebar-nav-item">
+                    <li class="sidebar-nav-item" *ngIf="checkAccessPage(this.currentUser.access.pages, 'page', 'blog-add')">
                         <a class="sidebar-nav-link" href="/">
                             <i class="fal fa-user-plus sidebar-nav-icon"></i>
                             Add New
                         </a>
                     </li>
                 </ul>
+            </li>
+
+            <li class="sidebar-nav-title" *ngIf="management">Management Extras</li>
+            <li class="sidebar-nav-item" *ngIf="management">
+                <a class="sidebar-nav-link" href="javascript:;" routerLink="/dashboard/staff/dev" routerLinkActive="active">
+                    <i class="fal fa-wrench sidebar-nav-icon"></i>
+                    Dev Blog
+                </a>
             </li>
 
             <li class="sidebar-nav-title">Other</li>
@@ -121,7 +156,7 @@
                     </li>
                     <li class="sidebar-nav-item">
                         <a class="sidebar-nav-link" href="/">
-                            <i class="fal fa-cogs sidebar-nav-icon"></i>
+                            <i class="fal fa-cog sidebar-nav-icon"></i>
                             Settings
                         </a>
                     </li>
@@ -129,7 +164,7 @@
             </li>
 
             <li class="sidebar-nav-item">
-                <a class="sidebar-nav-link" href="/">
+                <a class="sidebar-nav-link" href="javascript:;" (click)="signOut()">
                     <i class="fal fa-sign-out sidebar-nav-icon"></i>
                     Sign out
                 </a>
@@ -199,14 +234,14 @@
             </li>
 
             <!-- mod: support tickets -->
-            <li class="nav-item">
+            <li class="nav-item" *ngIf="management">
                 <a class="nav-link" data-toggle="tab" data-tab="#modsupport" href="javascript:;" tab>
                     <i class="fas fa-life-ring icon"></i>
                 </a>
             </li>
 
             <!-- mod: -->
-            <li class="nav-item">
+            <li class="nav-item" *ngIf="management">
                 <a class="nav-link" data-toggle="tab" data-tab="#modother" href="javascript:;" tab>
                     <i class="fas fa-braille icon"></i>
                 </a>

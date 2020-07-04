@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+
 import { AppDashboardComponent } from './app-dashboard.component';
+import { AuthGuard } from 'src/app/__services/auth.guard';
 
 import { DashboardComponent } from './clients/dashboard/dashboard.component';
 import { BlogComponent } from './clients/blog/blog.component';
@@ -20,7 +22,8 @@ const routes: Routes = [
           title: 'Dashboard'
         }
       }
-    ]
+    ],
+    canActivate: [AuthGuard]
   },
   {
     path: 'dashboard/blog',
@@ -34,7 +37,8 @@ const routes: Routes = [
           title: 'Blog'
         }
       },
-    ]
+    ],
+    canActivate: [AuthGuard]
   },
   {
     path: 'dashboard/network-status',
@@ -48,7 +52,8 @@ const routes: Routes = [
           title: 'Network Status'
         }
       },
-    ]
+    ],
+    canActivate: [AuthGuard]
   },
 ];
 
