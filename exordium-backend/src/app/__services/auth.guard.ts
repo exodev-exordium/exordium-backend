@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 
 import { AuthService } from './auth.service';
 
@@ -11,7 +12,8 @@ export class AuthGuard implements CanActivate {
 
   constructor(
     public authService: AuthService,
-    public router: Router
+    public router: Router,
+    private toastr: ToastrService
   ) { }
 
   canActivate(
@@ -19,7 +21,7 @@ export class AuthGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     
     if (this.authService.isSignedIn !== true) {
-      window.alert('Access is not allowed!');
+      this.toastr.error("You need to be signed in to view that page! Please sign in now.");
       this.router.navigate(['auth/signin']);
     }
     
