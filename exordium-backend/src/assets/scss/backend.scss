@@ -1720,7 +1720,14 @@ html:not([dir=rtl]) .breadcrumb-item + .breadcrumb-item {
 .breadcrumb-item + .breadcrumb-item::before {
   display: inline-block;
   color: #8a93a2;
-  content: "/";
+  content: "";
+  background-image: url("data:image/svg+xml;utf8,<svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M14.4444 8.41358C14.7776 8.2281 15.1875 8.46907 15.1875 8.85048V15.1495C15.1875 15.5309 14.7776 15.7719 14.4444 15.5864L8.78505 12.4369C8.44258 12.2463 8.44258 11.7537 8.78505 11.5631L14.4444 8.41358Z' fill='%23495057'/></svg>");
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0;
+  margin-right: 0.25rem;
+  transform: rotateZ(180deg);
+  opacity: 0.2;
 }
 
 html:not([dir=rtl]) .breadcrumb-item + .breadcrumb-item::before {
