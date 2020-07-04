@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { AppAuthComponent } from './app-auth.component';
+import { AuthGuard } from 'src/app/__services/auth.guard';
 
 import { RegisterComponent } from './register/register.component';
 import { SigninComponent } from './signin/signin.component';
@@ -18,58 +19,59 @@ const routes: Routes = [
   {
     path: 'auth/signin',
     component: AppAuthComponent,
-    data: {
-      title: 'Sign in'
-    },
     children: [
       {
         path: '',
         component: SigninComponent,
-        outlet: 'auth-route'
+        outlet: 'auth-route',
+        data: {
+          title: 'Sign in'
+        },
       },
     ]
   },
   {
     path: 'auth/register',
     component: AppAuthComponent,
-    data: {
-      title: 'Register'
-    },
     children: [
       {
         path: '',
         component: RegisterComponent,
-        outlet: 'auth-route'
+        outlet: 'auth-route',
+        data: {
+          title: 'Register'
+        }
       },
     ]
   },
   {
     path: 'auth/forgotten-pass',
     component: AppAuthComponent,
-    data: {
-      title: 'Forgotten Password?'
-    },
     children: [
       {
         path: '',
         component: ForgottenPassComponent,
-        outlet: 'auth-route'
+        outlet: 'auth-route',
+        data: {
+          title: 'Forgotten Password?'
+        },
       },
     ]
   },
   {
     path: 'auth/locked',
     component: AppAuthComponent,
-    data: {
-      title: 'Locked out'
-    },
     children: [
       {
         path: '',
         component: LockedComponent,
-        outlet: 'auth-route'
+        outlet: 'auth-route',
+        data: {
+          title: 'Locked out'
+        },
       },
-    ]
+    ],
+    canActivate: [AuthGuard]
   }
 ];
 
