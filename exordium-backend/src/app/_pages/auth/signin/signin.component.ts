@@ -44,7 +44,7 @@ export class SigninComponent implements OnInit {
   }
 
   onSubmit(): void {
-    const srcButton = $('submitSignin');
+    const srcButton = $('.submitSignin');
     srcButton.attr('disabled', true);
     srcButton.addClass('m-progress');
 
@@ -52,7 +52,7 @@ export class SigninComponent implements OnInit {
       this.toastr.error('Please make sure you fill out all the fields correctly, then try signing in again...');
     } else {
       this.authService.signin(this.signinForm.value).subscribe((res) => {
-        this.toastr.success('You have successfully logged in!');
+        this.toastr.success(`You have successfully signed in, ${res.username.charAt(0).toUpperCase() + res.username.slice(1)}!`);
 
         localStorage.setItem('access_token', res.token);
 
