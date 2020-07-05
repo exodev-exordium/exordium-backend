@@ -28,6 +28,7 @@
     "@swimlane/ngx-datatable": "^17.0.0",
     "bootstrap": "4.3.1",
     "chart.js": "^2.9.3",
+    "idlejs": "^2.1.0",
     "jarallax": "^1.12.1",
     "jquery": "^3.5.1",
     "ng-recaptcha": "^5.0.0",
