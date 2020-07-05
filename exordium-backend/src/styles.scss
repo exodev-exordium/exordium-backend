@@ -16,6 +16,15 @@ app-app-auth {
     .breadcrumb {
         border-bottom: 0 !important;
     }
+
+    footer .nav-link:not(.active):not(.disabled):not(:hover), 
+    section .nav-link:not(.active):not(.disabled):not(:hover) {
+        opacity: .5;
+    }
+    footer .nav-link, 
+    section .nav-link {
+        transition: opacity .2s linear;
+    }
 }
 app-app-dashboard {
     font-size: 0.875rem;
