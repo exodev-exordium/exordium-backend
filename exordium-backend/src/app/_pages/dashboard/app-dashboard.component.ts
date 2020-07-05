@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
+import { AuthService } from 'src/app/__services/auth.service';
 import { UserService } from 'src/app/__services/user.service';
+
+import { Idle } from 'idlejs/dist';
 
 @Component({
   selector: 'app-app-dashboard',
@@ -27,6 +30,7 @@ export class AppDashboardComponent implements OnInit {
   ];
 
   constructor(
+    private authService: AuthService,
     private userService: UserService
   ) { }
 
@@ -39,10 +43,16 @@ export class AppDashboardComponent implements OnInit {
       }
 
     });
+
+    const idle = new Idle().whenNotInteractive().within(15).do(() => {
+      // we've been idle for 15 minutes, time to lockout. 
+      console.log('IDLE');
+    }).start();
+
   }
 
   signOut(): void {
-
+    this.authService.signout();
   }
 
   // checkRoles
