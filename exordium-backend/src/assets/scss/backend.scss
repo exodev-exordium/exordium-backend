@@ -1971,7 +1971,7 @@ html:not([dir=rtl]) .dropleft .dropdown-toggle-split::before {
   border-radius: .25rem;
   transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 
-  i, .icon {
+  .icon {
     width: .875rem;
     height: .875rem;
     margin: .21875rem 0;
