@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, NavigationEnd, NavigationStart } from '@angular/router';
+import { Router, NavigationEnd, NavigationStart, NavigationError } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { filter, map } from 'rxjs/operators';
 
@@ -32,6 +32,12 @@ export class AppComponent implements OnInit {
 
         setTimeout(() => {
           this.loader.complete();
+        }, 2000);
+      }
+
+      if (event instanceof NavigationError) {
+        setTimeout(() => {
+          this.loader.stop();
         }, 2000);
       }
 
