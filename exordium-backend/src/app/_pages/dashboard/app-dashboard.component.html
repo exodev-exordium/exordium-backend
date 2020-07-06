@@ -1,7 +1,7 @@
 <div class="app light-theme">
     <div class="sidebar sidebar-dark sidebar-fixed sidebar-lg-show scrollbar" id="sidebar">
+        
         <div class="sidebar-brand d-md-down-none">
-
             <div class="sidebar-brand-full">
                 <i class="fas fa-2x fa-signal-stream"></i>
             </div>
@@ -74,13 +74,13 @@
                 </a>
                 <ul class="sidebar-nav-dropdown-items">
                     <li class="sidebar-nav-item" *ngIf="checkAccessPage(this.currentUser.access.pages, 'page', 'users-overview')">
-                        <a class="sidebar-nav-link" href="javascript:;" routerLink="/dashboard/mod/users" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                        <a class="sidebar-nav-link" href="javascript:;" routerLink="/dashboard/staff/users" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                             <i class="fal fa-search sidebar-nav-icon"></i>
                             Overview
                         </a>
                     </li>
                     <li class="sidebar-nav-item" *ngIf="checkAccessPage(this.currentUser.access.pages, 'page', 'users-add')">
-                        <a class="sidebar-nav-link" href="javascript:;" routerLink="/dashboard/mod/users/add" routerLinkActive="active">
+                        <a class="sidebar-nav-link" href="javascript:;" routerLink="/dashboard/staff/users/add" routerLinkActive="active">
                             <i class="fal fa-user-plus sidebar-nav-icon"></i>
                             Add New
                         </a>
@@ -95,13 +95,13 @@
                 </a>
                 <ul class="sidebar-nav-dropdown-items">
                     <li class="sidebar-nav-item" *ngIf="checkAccessPage(this.currentUser.access.pages, 'page', 'blog-overview')">
-                        <a class="sidebar-nav-link" href="/">
+                        <a class="sidebar-nav-link" href="javascript:;" routerLink="/dashboard/staff/blogs" routerLinkActive="active">
                             <i class="fal fa-search sidebar-nav-icon"></i>
                             Overview
                         </a>
                     </li>
                     <li class="sidebar-nav-item" *ngIf="checkAccessPage(this.currentUser.access.pages, 'page', 'blog-add')">
-                        <a class="sidebar-nav-link" href="/">
+                        <a class="sidebar-nav-link" href="javascript:;" routerLink="/dashboard/staff/blogs/add" routerLinkActive="active">
                             <i class="fal fa-user-plus sidebar-nav-icon"></i>
                             Add New
                         </a>
@@ -125,37 +125,37 @@
                 </a>
                 <ul class="sidebar-nav-dropdown-items">
                     <li class="sidebar-nav-item">
-                        <a class="sidebar-nav-link" href="/">
+                        <a class="sidebar-nav-link" href="javascript:;">
                             <i class="fal fa-search sidebar-nav-icon"></i>
                             Overview
                         </a>
                     </li>
                     <li class="sidebar-nav-item">
-                        <a class="sidebar-nav-link" href="/">
+                        <a class="sidebar-nav-link" href="javascript:;">
                             <i class="fal fa-tasks sidebar-nav-icon"></i>
                             Logs
                         </a>
                     </li>
                     <li class="sidebar-nav-item">
-                        <a class="sidebar-nav-link" href="/">
+                        <a class="sidebar-nav-link" href="javascript:;">
                             <i class="fal fa-user-friends sidebar-nav-icon"></i>
                             Session
                         </a>
                     </li>
                     <li class="sidebar-nav-item">
-                        <a class="sidebar-nav-link" href="/">
+                        <a class="sidebar-nav-link" href="javascript:;">
                             <i class="fal fa-random sidebar-nav-icon"></i>
                             Connections
                         </a>
                     </li>
                     <li class="sidebar-nav-item">
-                        <a class="sidebar-nav-link" href="/">
+                        <a class="sidebar-nav-link" href="javascript:;">
                             <i class="fal fa-shield sidebar-nav-icon"></i>
                             Security
                         </a>
                     </li>
                     <li class="sidebar-nav-item">
-                        <a class="sidebar-nav-link" href="/">
+                        <a class="sidebar-nav-link" href="javascript:;">
                             <i class="fal fa-cog sidebar-nav-icon"></i>
                             Settings
                         </a>
