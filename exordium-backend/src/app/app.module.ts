@@ -10,6 +10,7 @@ import { RecaptchaModule, RecaptchaFormsModule, RECAPTCHA_SETTINGS, RecaptchaSet
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { ToastrModule } from 'ngx-toastr';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
 import { LoadingBarModule } from '@ngx-loading-bar/core';
@@ -116,6 +117,8 @@ import { StaffBlogComponent } from './_pages/dashboard/management/dev/staff-blog
     ReactiveFormsModule,
     RecaptchaModule,
     RecaptchaFormsModule,
+
+    CKEditorModule,
 
     LoadingBarRouterModule,
     LoadingBarModule,
