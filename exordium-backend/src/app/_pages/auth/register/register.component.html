@@ -1,5 +1,5 @@
 <!-- Login Page -->
-<section class="bg-dark header-inner p-0 jarallax position-relative" data-jarallax data-speed="0.2" data-overlay>
+<section class="bg-dark header-inner p-0 jarallax position-relative" data-overlay>
     <img src="assets/img/exordium/backgrounds/mountain0.jpg" alt="Image" class="jarallax-img opacity-20">
     <div class="container py-0 pt-7">
       <div class="row my-3 text-light">
@@ -7,7 +7,7 @@
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item">
-                <a href="/welcome">Exordium</a>
+                <a href="https://exordium.org/#/welcome">Exordium</a>
               </li>
               <li class="breadcrumb-item active" aria-current="page">Register</li>
             </ol>
@@ -15,7 +15,7 @@
         </div>
       </div>
       <div class="row my-4 my-md-6 text-light">
-        <div class="col-md-12 text-center">
+        <div class="col-md-12 text-center animate__animated animate__fadeInUp">
           <h1 class="display-4">Register</h1>
           <p class="lead mb-0">Get started with Exordium today! All you need to do is create your account.</p>
         </div>
@@ -23,180 +23,183 @@
 
       <div class="row justify-content-center my-3">
         <div class="col-lg-7">
+
+          <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
             <div class="card shadow-sm mb-4">
-                <div class="card-body">
+              <div class="card-body">
       
-                  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-      
-                    <div class="row">
+                <div class="row">
 
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label>Username *</label>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Username *</label>
 
-                          <div class="input-group mb-3">
-                            <div class="input-group-prepend"
-                              [ngClass]="{'ng-invalid': f.username.invalid && f.username.dirty,
-                                          'ng-valid': f.username.valid && f.username.dirty}">
-                              <span class="input-group-text">
-                                <i class="fa fa-fw fa-user"></i>
-                              </span>
-                            </div>
-                            <input name="username" type="text" formControlName="username" placeholder="deadpool" class="form-control" required>
-                          </div>
-                          <div class="invalid-feedback">
-                            Please type your username.
-                          </div>
-
+                      <div class="input-group mb-3">
+                        <div class="input-group-prepend"
+                          [ngClass]="{'ng-invalid': f.username.invalid && f.username.dirty,
+                                      'ng-valid': f.username.valid && f.username.dirty}">
+                          <span class="input-group-text">
+                            <i class="fa fa-fw fa-user"></i>
+                          </span>
                         </div>
+                        <input name="username" type="text" formControlName="username" placeholder="deadpool" class="form-control" required>
+                      </div>
+                      <div class="invalid-feedback">
+                        Please type your username.
                       </div>
 
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label>Email *</label>
-
-                          <div class="input-group mb-3">
-                            <div class="input-group-prepend"
-                              [ngClass]="{'ng-invalid': f.email.invalid && f.email.dirty,
-                                          'ng-valid': f.email.valid && f.email.dirty}">
-                              <span class="input-group-text">
-                                <i class="fa fa-fw fa-envelope"></i>
-                              </span>
-                            </div>
-                            <input name="email" type="email" formControlName="email" placeholder="ryan@deadpool.com" class="form-control" required>
-                          </div>
-                          <div class="invalid-feedback">
-                            Please type your email address.
-                          </div>
-
-                        </div>
-                      </div>
-
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label>Real Name</label>
-
-                          <div class="input-group mb-3">
-                            <div class="input-group-prepend"
-                              [ngClass]="{'ng-invalid': f.realname.invalid && f.realname.dirty,
-                                          'ng-valid': f.realname.valid && f.realname.dirty}">
-                              <span class="input-group-text">
-                                <i class="fa fa-fw fa-person-sign"></i>
-                              </span>
-                            </div>
-                            <input name="realname" type="text" formControlName="realname" placeholder="Ryan Reynolds" class="form-control" required>
-                          </div>
-                          <div class="invalid-feedback">
-                            Please type your name.
-                          </div>
-
-                        </div>
-                      </div>
-
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label>Country * </label>
-
-                          <div class="input-group mb-3">
-                            <div class="input-group-prepend"
-                              [ngClass]="{'ng-invalid': f.country.invalid && f.country.dirty,
-                                          'ng-valid': f.country.valid && f.country.dirty}">
-                              <span class="input-group-text">
-                                <i class="fa fa-fw fa-globe"></i>
-                              </span>
-                            </div>
-                            <ng-select
-                              formControlName="country"
-                              class="form-control ng-select"
-                              placeholder="Canada"
-                              [items]="countries"
-                              bindLabel="name">
-                            </ng-select>
-                          </div>
-                          <div class="invalid-feedback">
-                            Please select your country.
-                          </div>
-
-                        </div>
-                      </div>
-
-                      <div class="col-12">
-                        <div class="form-group">
-                          <label>Password *</label>
-
-                          <div class="input-group mb-3">
-                            <div class="input-group-prepend"
-                              [ngClass]="{'ng-invalid': f.password.invalid && f.password.dirty,
-                                          'ng-valid': f.password.valid && f.password.dirty}">
-                              <span class="input-group-text">
-                                <i class="fa fa-fw fa-key"></i>
-                              </span>
-                            </div>
-                            <input name="password" type="password" formControlName="password" placeholder="*************" class="form-control" required>
-                          </div>
-                          <div class="invalid-feedback">
-                            Please type your desired password.
-                          </div>
-
-                        </div>
-                      </div>
-                      <div class="col-12">
-                        <div class="form-group">
-                          <label>Verify Password *</label>
-
-                          <div class="input-group mb-3">
-                            <div class="input-group-prepend"
-                              [ngClass]="{'ng-invalid': f.confirmPassword.invalid && f.confirmPassword.dirty,
-                                          'ng-valid': f.confirmPassword.valid && f.confirmPassword.dirty}">
-                              <span class="input-group-text">
-                                <i class="fa fa-fw fa-lock"></i>
-                              </span>
-                            </div>
-                            <input name="confirmPassword" type="password" formControlName="confirmPassword" placeholder="*************" class="form-control" required>
-                          </div>
-                          <div class="invalid-feedback">
-                            Verify that your passwords match.
-                          </div>
-
-                        </div>
-                      </div>
-
-                      <div class="col-12">
-                        <div class="form-group">
-                          <label>Prove that you're human *</label>
-                          <re-captcha
-                            formControlName="recaptcha"
-                          ></re-captcha>
-                        </div>
-                      </div>
-                      <div class="col-12 mt-2">
-
-                        <div class="row">
-                            <div class="col-12">
-                                <button type="submit" class="btn btn-primary submitRegister">
-                                    <i class="fa fa-fw fa-user-plus"></i>
-                                    Register
-                                </button>
-                            </div>
-                        </div>
-
-                      </div>
                     </div>
-                  </form>
-      
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Email *</label>
+
+                      <div class="input-group mb-3">
+                        <div class="input-group-prepend"
+                          [ngClass]="{'ng-invalid': f.email.invalid && f.email.dirty,
+                                      'ng-valid': f.email.valid && f.email.dirty}">
+                          <span class="input-group-text">
+                            <i class="fa fa-fw fa-envelope"></i>
+                          </span>
+                        </div>
+                        <input name="email" type="email" formControlName="email" placeholder="ryan@deadpool.com" class="form-control" required>
+                      </div>
+                      <div class="invalid-feedback">
+                        Please type your email address.
+                      </div>
+
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Real Name</label>
+
+                      <div class="input-group mb-3">
+                        <div class="input-group-prepend"
+                          [ngClass]="{'ng-invalid': f.realname.invalid && f.realname.dirty,
+                                      'ng-valid': f.realname.valid && f.realname.dirty}">
+                          <span class="input-group-text">
+                            <i class="fa fa-fw fa-person-sign"></i>
+                          </span>
+                        </div>
+                        <input name="realname" type="text" formControlName="realname" placeholder="Ryan Reynolds" class="form-control" required>
+                      </div>
+                      <div class="invalid-feedback">
+                        Please type your name.
+                      </div>
+
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Country * </label>
+
+                      <div class="input-group mb-3">
+                        <div class="input-group-prepend"
+                          [ngClass]="{'ng-invalid': f.country.invalid && f.country.dirty,
+                                      'ng-valid': f.country.valid && f.country.dirty}">
+                          <span class="input-group-text">
+                            <i class="fa fa-fw fa-globe"></i>
+                          </span>
+                        </div>
+                        <ng-select
+                          formControlName="country"
+                          class="form-control ng-select"
+                          placeholder="Canada"
+                          [items]="countries"
+                          bindLabel="name">
+                        </ng-select>
+                      </div>
+                      <div class="invalid-feedback">
+                        Please select your country.
+                      </div>
+
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+                    <div class="form-group">
+                      <label>Password *</label>
+
+                      <div class="input-group mb-3">
+                        <div class="input-group-prepend"
+                          [ngClass]="{'ng-invalid': f.password.invalid && f.password.dirty,
+                                      'ng-valid': f.password.valid && f.password.dirty}">
+                          <span class="input-group-text">
+                            <i class="fa fa-fw fa-key"></i>
+                          </span>
+                        </div>
+                        <input name="password" type="password" formControlName="password" placeholder="*************" class="form-control" required>
+                      </div>
+                      <div class="invalid-feedback">
+                        Please type your desired password.
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="form-group">
+                      <label>Verify Password *</label>
+
+                      <div class="input-group mb-3">
+                        <div class="input-group-prepend"
+                          [ngClass]="{'ng-invalid': f.confirmPassword.invalid && f.confirmPassword.dirty,
+                                      'ng-valid': f.confirmPassword.valid && f.confirmPassword.dirty}">
+                          <span class="input-group-text">
+                            <i class="fa fa-fw fa-lock"></i>
+                          </span>
+                        </div>
+                        <input name="confirmPassword" type="password" formControlName="confirmPassword" placeholder="*************" class="form-control" required>
+                      </div>
+                      <div class="invalid-feedback">
+                        Verify that your passwords match.
+                      </div>
+
+                    </div>
+                  </div>
+
+                  <div class="col-12">
+                    <div class="form-group">
+                      <label>Prove that you're human *</label>
+                      <re-captcha
+                        formControlName="recaptcha"
+                      ></re-captcha>
+                    </div>
+                  </div>
                 </div>
+      
               </div>
+              <div class="card-footer">
+
+                <div class="row">
+                  <div class="col-12">
+                    <button type="submit" class="btn btn-primary submitRegister">
+                      <i class="fa fa-fw fa-user-plus"></i>
+                      Register
+                    </button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </form>
+
         </div>
       </div>
 
       <div class="row mb-6">
           <div class="col-12 text-center">
             <p>
-                <a href="javascript:;" class="btn btn-link btn-link-overlay" routerLink ="/auth/signin">
-                    <i class="fa fa-fw da-sign-in-alt"></i>
-                    Already have an account? Sign in now!
-                </a>
-            </p>
+              <a href="javascript:;" class="btn btn-link btn-link-overlay" routerLink ="/auth/signin">
+                <i class="fa fa-fw fa-sign-in"></i>
+                Already have an account? Sign in now!
+              </a>
+          </p>
           </div>
       </div>
 
