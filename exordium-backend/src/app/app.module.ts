@@ -43,8 +43,10 @@ import { RegisterComponent } from './_pages/auth/register/register.component';
 import { ForgottenPassComponent } from './_pages/auth/forgotten-pass/forgotten-pass.component';
 import { LockedComponent } from './_pages/auth/locked/locked.component';
 
-// Clients Dashboard
+// Clients
 import { DashboardComponent } from './_pages/dashboard/clients/dashboard/dashboard.component';
+import { BlogComponent } from './_pages/dashboard/clients/blog/blog.component';
+import { NetworkStatusComponent } from './_pages/dashboard/clients/network-status/network-status.component';
 import { UserConnectionsComponent } from './_pages/dashboard/clients/user/user-connections/user-connections.component';
 import { UserLogsComponent } from './_pages/dashboard/clients/user/user-logs/user-logs.component';
 import { UserOverviewComponent } from './_pages/dashboard/clients/user/user-overview/user-overview.component';
@@ -52,13 +54,16 @@ import { UserSecurityComponent } from './_pages/dashboard/clients/user/user-secu
 import { UserSessionsComponent } from './_pages/dashboard/clients/user/user-sessions/user-sessions.component';
 import { UserSettingsComponent } from './_pages/dashboard/clients/user/user-settings/user-settings.component';
 
-// Moderation Dashboard
-import { ModOverviewComponent } from './_pages/dashboard/moderation/mod-overview/mod-overview.component';
-import { ModContactComponent } from './_pages/dashboard/moderation/mod-contact/mod-contact.component';
-import { ModUsersDisableComponent } from './_pages/dashboard/moderation/users/mod-users-disable/mod-users-disable.component';
-import { ModUsersEditComponent } from './_pages/dashboard/moderation/users/mod-users-edit/mod-users-edit.component';
-import { ModUsersViewComponent } from './_pages/dashboard/moderation/users/mod-users-view/mod-users-view.component';
-import { ModUsersComponent } from './_pages/dashboard/moderation/users/mod-users/mod-users.component';
+// Management
+import { StaffContactComponent } from './_pages/dashboard/management/support/staff-contact/staff-contact.component';
+import { StaffUsersOverviewComponent } from './_pages/dashboard/management/users/staff-users-overview/staff-users-overview.component';
+import { StaffUsersAddComponent } from './_pages/dashboard/management/users/staff-users-add/staff-users-add.component';
+import { StaffBlogOverviewComponent } from './_pages/dashboard/management/blogs/staff-blog-overview/staff-blog-overview.component';
+import { StaffBlogAddComponent } from './_pages/dashboard/management/blogs/staff-blog-add/staff-blog-add.component';
+import { StaffBlogEditComponent } from './_pages/dashboard/management/blogs/staff-blog-edit/staff-blog-edit.component';
+import { StaffBlogDisableComponent } from './_pages/dashboard/management/blogs/staff-blog-disable/staff-blog-disable.component';
+import { StaffBlogComponent } from './_pages/dashboard/management/dev/staff-blog/staff-blog.component';
+
 
 @NgModule({
   declarations: [
@@ -81,6 +86,9 @@ import { ModUsersComponent } from './_pages/dashboard/moderation/users/mod-users
     LockedComponent,
     
     DashboardComponent,
+    BlogComponent,
+    NetworkStatusComponent,
+
     UserConnectionsComponent,
     UserLogsComponent,
     UserOverviewComponent,
@@ -88,12 +96,14 @@ import { ModUsersComponent } from './_pages/dashboard/moderation/users/mod-users
     UserSessionsComponent,
     UserSettingsComponent,
 
-    ModOverviewComponent,
-    ModContactComponent,
-    ModUsersDisableComponent,
-    ModUsersEditComponent,
-    ModUsersViewComponent,
-    ModUsersComponent,
+    StaffContactComponent,
+    StaffUsersOverviewComponent,
+    StaffUsersAddComponent,
+    StaffBlogOverviewComponent,
+    StaffBlogAddComponent,
+    StaffBlogEditComponent,
+    StaffBlogDisableComponent,
+    StaffBlogComponent
 
   ],
   imports: [
