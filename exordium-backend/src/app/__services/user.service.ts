@@ -1,13 +1,18 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { throwError, Observable } from 'rxjs';
+
+// rxjs
+import { Observable } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 
+// Handler
+import { SituationHandler } from './helpers/situation.handler';
+
 // Models and Vars
-import { User } from './model/User';
 import { API } from './vars/Api';
 import { DiscordToken } from './model/Connections';
+
 
 @Injectable({
   providedIn: 'root'
@@ -18,22 +23,9 @@ export class UserService {
 
   constructor(
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private handler: SituationHandler
   ) { }
-
-  // ErrorHandler
-  handleError(error: HttpErrorResponse) {
-    let msg = '';
-    if (error.error instanceof ErrorEvent) {
-        // client-side error
-        msg = error.error.message;
-    } else {
-        // server-side error
-        msg = `Error Code: ${error.status}\nMessage: ${error.message}`;
-    }
-
-    return throwError(msg);
-  }
   
   // Basic User Data
   getUserDataBasic(): Observable<any> {
@@ -44,7 +36,7 @@ export class UserService {
           return res || {};
         }
       ),
-      catchError(this.handleError)
+      catchError(this.handler.handleError)
     );
   }
 
@@ -57,7 +49,7 @@ export class UserService {
           return res || {};
         }
       ),
-      catchError(this.handleError)
+      catchError(this.handler.handleError)
     );
   }
 
@@ -70,7 +62,7 @@ export class UserService {
           return res || {};
         }
       ),
-      catchError(this.handleError)
+      catchError(this.handler.handleError)
     );
   }
 
@@ -79,7 +71,7 @@ export class UserService {
     const api = `${this.endpoint}/user/me/connection/discord`;
 
     return this.http.post (api, token, { headers: this.headers }).pipe(
-      catchError(this.handleError)
+      catchError(this.handler.handleError)
     );
   }
 
@@ -92,7 +84,7 @@ export class UserService {
           return res || {};
         }
       ),
-      catchError(this.handleError)
+      catchError(this.handler.handleError)
     );
   }
 }
