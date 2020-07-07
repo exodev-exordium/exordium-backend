@@ -1,1 +1,158 @@
-<p>staff-users-overview works!</p>
+<ngx-datatable 
+    class="card shadow-sm material" 
+    [rows]="users" 
+    [columnMode]="columnMode.force" 
+    [headerHeight]="50" 
+    [footerHeight]="50"
+    [rowHeight]="50" 
+    [scrollbarV]="false"
+    [scrollbarH]="false" 
+    [sorts]="[{prop: 'registration.registeredAt', dir: 'desc'}]"
+    [selected]="selected"
+    [selectionType]="selectionType.single"
+    (select)="onSelect($event)">
+
+    <ngx-datatable-column name="<i class='fa fa-fw fa-envelope'></i> Email">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+            {{row.email}}
+        </ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="<i class='fa fa-fw fa-user'></i> Username">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+            {{row.username}}
+        </ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="<i class='fa fa-fw fa-star'></i> Permissions">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+            <span class="badge badge-primary">
+            {{row.title}}
+            </span>
+        </ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="<i class='fa fa-fw fa-globe-americas'></i> Country">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+            {{row.registration.country.name}}
+        </ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="<i class='fa fa-fw fa-globe'></i> IP Address">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+            <a href="javascript:;">{{row.updated.ipAddress}}</a>
+        </ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="" [cellClass]="'datatable-dropdown-cell text-right'">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+
+            <div class="dropdown">
+            <a class="btn btn-sm btn-primary dropdown-toggle" href="javascript:;" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Modify
+                <i class="fa fa-fw fa-caret-down"></i>
+            </a>
+            
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="javascript:;" (click)="onView(content)">
+                    <i class="fa fa-fw fa-search"></i>
+                    View
+                </a>
+                <a class="dropdown-item" href="javascript:;" routerLink="/moderation/users/edit/{{row._id}}">
+                    <i class="fa fa-fw fa-cog"></i>
+                    Edit
+                </a>
+                <a class="dropdown-item" href="javascript:;" routerLink="/moderation/users/disable/{{row._id}}">
+                    <i class="fa fa-fw fa-trash"></i>
+                    Disable
+                </a>
+            </div>
+        </div>
+            
+        </ng-template>
+    </ngx-datatable-column>
+
+</ngx-datatable>
+
+<!-- Modal -->
+<ng-template #content let-modal>
+    <div *ngFor="let user of selected">
+      <div class="modal-header">
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+  
+        <div class="h3 text-capitalize">
+          {{user.username}}
+          <span class="badge badge-dark float-right">
+            {{user.title}}
+          </span>
+        </div>
+  
+        <hr>
+  
+        <p><strong>User</strong></p>
+  
+        <div class="form-group px-4 row">
+          <label class="col-md-3 col-form-label">
+            Username
+          </label>
+          <div class="col-md-9">
+            <input type="text" class="form-control" value="{{user.username}}" readonly />
+          </div>
+        </div>
+        <div class="form-group px-4 row">
+          <label class="col-md-3 col-form-label">
+            Email
+          </label>
+          <div class="col-md-9">
+            <input type="text" class="form-control" value="{{user.email}}" readonly />
+          </div>
+        </div>
+        <div class="form-group px-4 row">
+          <label class="col-md-3 col-form-label">
+            Realname
+          </label>
+          <div class="col-md-9">
+            <input type="text" class="form-control" value="{{user.realname}}" readonly />
+          </div>
+        </div>
+  
+        <p><strong>Moderation</strong></p>
+  
+        <div class="form-group px-4 row">
+          <label class="col-md-3 col-form-label">
+            Permissions
+          </label>
+          <div class="col-md-9">
+            <ng-select
+              [items]="permissionAccess"
+              [multiple]="true"
+              [searchable]="false"
+              [clearable]="false"
+              bindLabel="role"
+              bindValue="role"
+              [(ngModel)]="selectedRoles"
+              >
+  
+              <ng-template ng-label-tmp let-item="item" let-clear="clear">
+                  <span class="ng-value-label text-capitalize"><i class="fa fa-fw {{item.icon}} mr-1"></i> {{item.role}}</span>
+                  <span class="ng-value-icon right" (click)="clear(item)" aria-hidden="true">×</span>
+              </ng-template>
+  
+              <ng-template ng-option-tmp let-item="item">
+                <i class="fa fa-fw {{item.icon}} mr-2"></i>
+                <span class="text-capitalize">{{item.role}}</span>
+              </ng-template>
+            </ng-select>
+          </div>
+        </div>
+  
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" (click)="modal.close('Close click')">Close</button>
+      </div>
+    </div>
+  </ng-template>
