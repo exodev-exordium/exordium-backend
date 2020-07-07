@@ -1,1 +1,117 @@
-<p>staff-contact works!</p>
+<div class="alert alert-info">
+    <strong>
+        <i class="fa fa-fw fa-info"></i>
+        Oi!
+    </strong>
+    Not all the content will display depending on your screen size, click on the view icon to display a modal with more information.
+</div>
+
+<ngx-datatable 
+    class="card shadow-sm material" 
+    [rows]="contactEmails" 
+    [columnMode]="columnMode.force" 
+    [headerHeight]="50" 
+    [footerHeight]="50"
+    [rowHeight]="50" 
+    [scrollbarV]="false"
+    [scrollbarH]="false" 
+    [sorts]="[{prop: 'created.createdAt', dir: 'desc'}]"
+    [selected]="selected"
+    [selectionType]="selectionType.single"
+    (select)="onSelect($event)">
+
+    <ngx-datatable-column name="<i class='fa fa-fw fa-user'></i> Name">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+        {{row.person.realname}}
+        </ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="<i class='fa fa-fw fa-envelope'></i> Email">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+        {{row.person.email}}
+        </ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="<i class='fa fa-fw fa-phone'></i> Phone">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+        <a href="javascript:;">{{row.person.phone}}</a>
+        </ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="<i class='fa fa-fw fa-building'></i> Company">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+        {{row.company}}
+        </ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="<i class='fa fa-fw fa-comment'></i> Message">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+        {{row.message}}
+        </ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="<i class='fa fa-fw fa-globe'></i> IP Address">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+        <a href="javascript:;">{{row.created.ipAddress}}</a>
+        </ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="" [cellClass]="'datatable-dropdown-cell'">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+
+        <a class="btn btn-sm btn-primary" href="javascript:;" (click)="onView(content)">
+            <i class="fa fa-fw fa-search"></i>
+        </a>
+        
+        </ng-template>
+    </ngx-datatable-column>
+
+</ngx-datatable>
+
+<!-- Modal -->
+<ng-template #content let-modal>
+    <div *ngFor="let email of selected">
+        <div class="modal-header">
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+        
+            <div class="h3">
+                {{email.person.realname}}
+                <span class="badge badge-secondary float-right" *ngIf="email.company">
+                {{email.company}}
+                </span>
+            </div>
+            <p class="text-muted">
+                <span class="mr-2" *ngIf="email.person.email">
+                <i class="fa fa-envelope"></i>
+                {{email.person.email}}
+                </span>
+
+                <span *ngIf="email.person.phone">
+                <i class="fa fa-phone"></i>
+                {{email.person.phone}}
+                </span>
+            </p>
+            <p class="my-4">
+                {{email.message}}
+            </p>
+            <p>
+                <span class="badge badge-info mr-2">
+                    <i class="fa fa-clock"></i>
+                    {{email.created.createdAt}}
+                </span>
+                <span class="badge badge-info">
+                    <i class="fa fa-globe"></i>
+                    {{email.created.ipAddress}}
+                </span>
+            </p>
+
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" (click)="modal.close('Close click')">Close</button>
+        </div>
+    </div>
+</ng-template>
