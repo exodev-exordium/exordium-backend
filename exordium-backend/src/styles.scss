@@ -25,6 +25,15 @@ app-app-auth {
     section .nav-link {
         transition: opacity .2s linear;
     }
+
+    .form-control-select {
+        position: relative;
+        flex: 1 1 auto;
+        width: 1%;
+        min-width: 0;
+        margin-bottom: 0;
+    }
+    
 }
 app-app-dashboard {
     font-size: 0.875rem;
