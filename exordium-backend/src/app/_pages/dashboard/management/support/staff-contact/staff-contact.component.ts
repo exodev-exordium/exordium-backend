@@ -42,7 +42,7 @@ export class StaffContactComponent implements OnInit {
   }
 
   checkPermissions() {
-    if (this.checkAccessPage(this.currentUser.access.pages, 'page', 'contact')) {
+    if (this.checkAccessPage(this.currentUser.access.pages, 'page', 'contact-overview')) {
 
       this.mContactService.contactEmails().subscribe(res => {
         this.contactEmails = res;
