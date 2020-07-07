@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // External
 import { RecaptchaModule, RecaptchaFormsModule, RECAPTCHA_SETTINGS, RecaptchaSettings } from 'ng-recaptcha';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { ToastrModule } from 'ngx-toastr';
 import { NgSelectModule } from '@ng-select/ng-select';
@@ -117,7 +118,7 @@ import { StaffBlogComponent } from './_pages/dashboard/management/dev/staff-blog
     ReactiveFormsModule,
     RecaptchaModule,
     RecaptchaFormsModule,
-
+    NgbModule,
     CKEditorModule,
 
     LoadingBarRouterModule,
