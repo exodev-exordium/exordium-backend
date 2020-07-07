@@ -43,7 +43,7 @@
                             <i class="fa fa-fw fa-user"></i>
                           </span>
                         </div>
-                        <input name="username" type="text" formControlName="username" placeholder="deadpool" class="form-control" required>
+                        <input name="username" type="text" autocomplete="username" formControlName="username" placeholder="deadpool" class="form-control" required>
                       </div>
                       <div class="invalid-feedback">
                         Please type your username.
@@ -64,7 +64,7 @@
                             <i class="fa fa-fw fa-envelope"></i>
                           </span>
                         </div>
-                        <input name="email" type="email" formControlName="email" placeholder="ryan@deadpool.com" class="form-control" required>
+                        <input name="email" type="email" autocomplete="email" formControlName="email" placeholder="ryan@deadpool.com" class="form-control" required>
                       </div>
                       <div class="invalid-feedback">
                         Please type your email address.
@@ -85,7 +85,7 @@
                             <i class="fa fa-fw fa-person-sign"></i>
                           </span>
                         </div>
-                        <input name="realname" type="text" formControlName="realname" placeholder="Ryan Reynolds" class="form-control" required>
+                        <input name="realname" type="text" autocomplete="given-name" formControlName="realname" placeholder="Ryan Reynolds" class="form-control" required>
                       </div>
                       <div class="invalid-feedback">
                         Please type your name.
@@ -107,8 +107,8 @@
                           </span>
                         </div>
                         <ng-select
+                          class="form-control-select"
                           formControlName="country"
-                          class="form-control ng-select"
                           placeholder="Canada"
                           [items]="countries"
                           bindLabel="name">
@@ -133,7 +133,7 @@
                             <i class="fa fa-fw fa-key"></i>
                           </span>
                         </div>
-                        <input name="password" type="password" formControlName="password" placeholder="*************" class="form-control" required>
+                        <input name="password" type="password" autocomplete="new-password" formControlName="password" placeholder="*************" class="form-control" required>
                       </div>
                       <div class="invalid-feedback">
                         Please type your desired password.
@@ -153,7 +153,7 @@
                             <i class="fa fa-fw fa-lock"></i>
                           </span>
                         </div>
-                        <input name="confirmPassword" type="password" formControlName="confirmPassword" placeholder="*************" class="form-control" required>
+                        <input name="confirmPassword" type="password" autocomplete="new-password" formControlName="confirmPassword" placeholder="*************" class="form-control" required>
                       </div>
                       <div class="invalid-feedback">
                         Verify that your passwords match.
