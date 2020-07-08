@@ -59,6 +59,9 @@ import { UserSettingsComponent } from './_pages/dashboard/clients/user/user-sett
 // Management
 import { StaffContactComponent } from './_pages/dashboard/management/support/staff-contact/staff-contact.component';
 import { StaffUsersOverviewComponent } from './_pages/dashboard/management/users/staff-users-overview/staff-users-overview.component';
+import { StaffUsersEditComponent } from './_pages/dashboard/management/users/staff-users-edit/staff-users-edit.component';
+import { StaffUsersDisableComponent } from './_pages/dashboard/management/users/staff-users-disable/staff-users-disable.component';
+
 import { StaffUsersAddComponent } from './_pages/dashboard/management/users/staff-users-add/staff-users-add.component';
 import { StaffBlogOverviewComponent } from './_pages/dashboard/management/blogs/staff-blog-overview/staff-blog-overview.component';
 import { StaffBlogAddComponent } from './_pages/dashboard/management/blogs/staff-blog-add/staff-blog-add.component';
@@ -100,7 +103,10 @@ import { StaffBlogComponent } from './_pages/dashboard/management/dev/staff-blog
 
     StaffContactComponent,
     StaffUsersOverviewComponent,
+    StaffUsersEditComponent, 
+    StaffUsersDisableComponent,
     StaffUsersAddComponent,
+
     StaffBlogOverviewComponent,
     StaffBlogAddComponent,
     StaffBlogEditComponent,
