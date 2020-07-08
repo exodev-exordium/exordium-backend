@@ -6,6 +6,9 @@ import { ColumnMode, SelectionType } from '@swimlane/ngx-datatable';
 import { UserService } from 'src/app/__services/user.service';
 import { MContactService } from 'src/app/__services/management/m-contact.service';
 
+import { Permissions } from 'src/app/__injectables/permissions.injectable';
+
+
 @Component({
   selector: 'app-staff-contact',
   templateUrl: './staff-contact.component.html',
@@ -26,6 +29,7 @@ export class StaffContactComponent implements OnInit {
     private router: Router,
     private modalService: NgbModal,
     private userService: UserService,
+    private permissions: Permissions,
     private mContactService: MContactService
   ) { }
 
@@ -33,26 +37,13 @@ export class StaffContactComponent implements OnInit {
     this.userService.getUserDataBasic().subscribe(res => {
       this.currentUser = res.response;
 
-      this.checkPermissions();
+      if (this.permissions.checkPermissions(this.currentUser.access.pages, 'contact-overview')) {
+        this.mContactService.contactEmails().subscribe(res => {
+          this.contactEmails = res;
+          this.loadingIndicator = false;
+        });
+      }
     });
-  }
-
-  checkAccessPage(array, key, value) {
-    return array.some(object => object[key] === value);
-  }
-
-  checkPermissions() {
-    if (this.checkAccessPage(this.currentUser.access.pages, 'page', 'contact-overview')) {
-
-      this.mContactService.contactEmails().subscribe(res => {
-        this.contactEmails = res;
-        console.log(this.contactEmails);
-        this.loadingIndicator = false;
-      });
-
-    } else {
-      this.router.navigate(['dashboard']);
-    }
   }
 
   onSelect({selected}) {
