@@ -47,22 +47,22 @@
     <ngx-datatable-column name="" [cellClass]="'datatable-dropdown-cell text-right'">
         <ng-template let-row="row" ngx-datatable-cell-template>
 
-            <div class="dropdown">
+            <div class="dropdown" navbarDropdown>
             <a class="btn btn-sm btn-primary dropdown-toggle" href="javascript:;" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Modify
                 <i class="fa fa-fw fa-caret-down"></i>
             </a>
             
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+            <div class="dropdown-menu">
                 <a class="dropdown-item" href="javascript:;" (click)="onView(content)">
                     <i class="fa fa-fw fa-search"></i>
                     View
                 </a>
-                <a class="dropdown-item" href="javascript:;" routerLink="/moderation/users/edit/{{row._id}}">
+                <a class="dropdown-item" href="javascript:;" routerLink="/dashboard/staff/users/edit/{{row._id}}">
                     <i class="fa fa-fw fa-cog"></i>
                     Edit
                 </a>
-                <a class="dropdown-item" href="javascript:;" routerLink="/moderation/users/disable/{{row._id}}">
+                <a class="dropdown-item" href="javascript:;" routerLink="/dashboard/staff/users/disable/{{row._id}}">
                     <i class="fa fa-fw fa-trash"></i>
                     Disable
                 </a>
@@ -76,83 +76,84 @@
 
 <!-- Modal -->
 <ng-template #content let-modal>
-    <div *ngFor="let user of selected">
-      <div class="modal-header">
-        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-  
-        <div class="h3 text-capitalize">
-          {{user.username}}
-          <span class="badge badge-dark float-right">
-            {{user.title}}
-          </span>
-        </div>
-  
-        <hr>
-  
-        <p><strong>User</strong></p>
-  
-        <div class="form-group px-4 row">
-          <label class="col-md-3 col-form-label">
-            Username
-          </label>
-          <div class="col-md-9">
-            <input type="text" class="form-control" value="{{user.username}}" readonly />
-          </div>
-        </div>
-        <div class="form-group px-4 row">
-          <label class="col-md-3 col-form-label">
-            Email
-          </label>
-          <div class="col-md-9">
-            <input type="text" class="form-control" value="{{user.email}}" readonly />
-          </div>
-        </div>
-        <div class="form-group px-4 row">
-          <label class="col-md-3 col-form-label">
-            Realname
-          </label>
-          <div class="col-md-9">
-            <input type="text" class="form-control" value="{{user.realname}}" readonly />
-          </div>
-        </div>
-  
-        <p><strong>Moderation</strong></p>
-  
-        <div class="form-group px-4 row">
-          <label class="col-md-3 col-form-label">
-            Permissions
-          </label>
-          <div class="col-md-9">
-            <ng-select
-              [items]="permissionAccess"
-              [multiple]="true"
-              [searchable]="false"
-              [clearable]="false"
-              bindLabel="role"
-              bindValue="role"
-              [(ngModel)]="selectedRoles"
-              >
-  
-              <ng-template ng-label-tmp let-item="item" let-clear="clear">
-                  <span class="ng-value-label text-capitalize"><i class="fa fa-fw {{item.icon}} mr-1"></i> {{item.role}}</span>
-                  <span class="ng-value-icon right" (click)="clear(item)" aria-hidden="true">×</span>
-              </ng-template>
-  
-              <ng-template ng-option-tmp let-item="item">
-                <i class="fa fa-fw {{item.icon}} mr-2"></i>
-                <span class="text-capitalize">{{item.role}}</span>
-              </ng-template>
-            </ng-select>
-          </div>
-        </div>
-  
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" (click)="modal.close('Close click')">Close</button>
-      </div>
+  <div *ngFor="let user of selected">
+    <div class="modal-header">
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
-  </ng-template>
+    <div class="modal-body">
+
+      <div class="h3 text-capitalize">
+        {{user.username}}
+        <span class="badge badge-dark float-right">
+          {{user.title}}
+        </span>
+      </div>
+
+      <hr>
+
+      <p><strong>User</strong></p>
+
+      <div class="form-group px-4 row">
+        <label class="col-md-3 col-form-label">
+          Username
+        </label>
+        <div class="col-md-9">
+          <input type="text" class="form-control" value="{{user.username}}" readonly />
+        </div>
+      </div>
+      <div class="form-group px-4 row">
+        <label class="col-md-3 col-form-label">
+          Email
+        </label>
+        <div class="col-md-9">
+          <input type="text" class="form-control" value="{{user.email}}" readonly />
+        </div>
+      </div>
+      <div class="form-group px-4 row">
+        <label class="col-md-3 col-form-label">
+          Realname
+        </label>
+        <div class="col-md-9">
+          <input type="text" class="form-control" value="{{user.realname}}" readonly />
+        </div>
+      </div>
+
+      <p><strong>Management</strong></p>
+
+      <div class="form-group px-4 row">
+        <label class="col-md-3 col-form-label">
+          Permissions
+        </label>
+        <div class="col-md-9">
+          <ng-select
+            [items]="permissionAccess"
+            [multiple]="true"
+            [searchable]="false"
+            [clearable]="false"
+            [disabled]="true"
+            bindLabel="role"
+            bindValue="role"
+            [(ngModel)]="selectedRoles"
+            >
+
+            <ng-template ng-label-tmp let-item="item" let-clear="clear">
+                <span class="ng-value-label text-capitalize"><i class="fa fa-sm fa-fw {{this.roles.icon(item.role)}} mr-1"></i> {{item.role}}</span>
+                <span class="ng-value-icon right" (click)="clear(item)" aria-hidden="true">×</span>
+            </ng-template>
+
+            <ng-template ng-option-tmp let-item="item">
+              <i class="fa fa-fw {{item.icon}} mr-2"></i>
+              <span class="text-capitalize">{{item.role}}</span>
+            </ng-template>
+          </ng-select>
+        </div>
+      </div>
+
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" (click)="modal.close('Close click')">Close</button>
+    </div>
+  </div>
+</ng-template>
