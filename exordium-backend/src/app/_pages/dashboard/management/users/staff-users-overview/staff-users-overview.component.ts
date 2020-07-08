@@ -6,6 +6,10 @@ import { ColumnMode, SelectionType } from '@swimlane/ngx-datatable';
 import { UserService } from 'src/app/__services/user.service';
 import { MUsersService } from 'src/app/__services/management/m-users.service';
 
+import { Permissions } from 'src/app/__injectables/permissions.injectable';
+import { Roles } from 'src/app/__injectables/roles.injectable';
+
+
 @Component({
   selector: 'app-staff-users-overview',
   templateUrl: './staff-users-overview.component.html',
@@ -27,36 +31,24 @@ export class StaffUsersOverviewComponent implements OnInit {
   permissionAccess = [];
 
   constructor(
-    private router: Router,
     private modalService: NgbModal,
     private userService: UserService,
-    private mUsersService: MUsersService
+    private permissions: Permissions,
+    private mUsersService: MUsersService,
+    public roles: Roles
   ) { }
 
   ngOnInit(): void {
     this.userService.getUserDataBasic().subscribe(res => {
       this.currentUser = res.response;
 
-      this.checkPermissions();
+      if (this.permissions.checkPermissions(this.currentUser.access.pages, 'users-overview')) {
+        this.mUsersService.getUsers().subscribe(res => {
+          this.users = res;
+          this.loadingIndicator = false;
+        });
+      }
     });
-  }
-
-  checkAccessPage(array, key, value) {
-    return array.some(object => object[key] === value);
-  }
-
-  checkPermissions() {
-    if (this.checkAccessPage(this.currentUser.access.pages, 'page', 'users-overview')) {
-
-      this.mUsersService.getUsers().subscribe(res => {
-        this.users = res;
-        console.log(this.users);
-        this.loadingIndicator = false;
-      });
-
-    } else {
-      this.router.navigate(['dashboard']);
-    }
   }
 
   onSelect({selected}) {
