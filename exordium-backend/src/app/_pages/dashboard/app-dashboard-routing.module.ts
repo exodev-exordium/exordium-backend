@@ -11,8 +11,9 @@ import { NetworkStatusComponent } from './clients/network-status/network-status.
 import { StaffContactComponent } from './management/support/staff-contact/staff-contact.component';
 
 import { StaffUsersOverviewComponent } from './management/users/staff-users-overview/staff-users-overview.component';
+import { StaffUsersEditComponent } from './management/users/staff-users-edit/staff-users-edit.component';
+import { StaffUsersDisableComponent } from './management/users/staff-users-disable/staff-users-disable.component';
 import { StaffUsersAddComponent } from './management/users/staff-users-add/staff-users-add.component';
-
 
 const routes: Routes = [
   {
@@ -102,6 +103,36 @@ const routes: Routes = [
         outlet: 'dashroute',
         data: {
           title: 'Users Overview'
+        }
+      },
+    ],
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'dashboard/staff/users/edit/:id',
+    component: AppDashboardComponent,
+    children: [
+      {
+        path: '',
+        component: StaffUsersEditComponent,
+        outlet: 'dashroute',
+        data: {
+          title: 'Edit User'
+        }
+      },
+    ],
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'dashboard/staff/users/disable/:id',
+    component: AppDashboardComponent,
+    children: [
+      {
+        path: '',
+        component: StaffUsersDisableComponent,
+        outlet: 'dashroute',
+        data: {
+          title: 'Disable User'
         }
       },
     ],
