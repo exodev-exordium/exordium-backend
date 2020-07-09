@@ -2,8 +2,11 @@ import { Component, OnInit } from '@angular/core';
 
 import { AuthService } from 'src/app/__services/auth.service';
 import { UserService } from 'src/app/__services/user.service';
+import { Roles } from 'src/app/__injectables/roles.injectable';
+import { Permissions } from 'src/app/__injectables/permissions.injectable';
 
 import { Idle } from 'idlejs/dist';
+
 
 @Component({
   selector: 'app-app-dashboard',
@@ -31,14 +34,16 @@ export class AppDashboardComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private userService: UserService
+    private userService: UserService,
+    private roles: Roles,
+    public permissions: Permissions
   ) { }
 
   ngOnInit(): void {
     this.userService.getUserDataBasic().subscribe(res => {
       this.currentUser = res.response;
 
-      if (this.checkRoles(this.managementRoles, this.currentUser.access.roles)) {
+      if (this.roles.check(this.currentUser.access.roles)) {
         this.management = true;
       }
 
@@ -53,22 +58,6 @@ export class AppDashboardComponent implements OnInit {
 
   signOut(): void {
     this.authService.signout();
-  }
-
-  // checkRoles
-  checkRoles(webRoles, apiRoles) {
-    const result = webRoles.some(obj1 => {
-      return apiRoles.some(obj2 => {
-        return obj1.role === obj2.role;
-      });
-    });
-
-    return result;
-  }
-
-  // Check what pages we have access to
-  checkAccessPage(array, key, value) {
-    return array.some(object => object[key] === value);
   }
 
 }

@@ -40,7 +40,7 @@
             </li>
 
             <li class="sidebar-nav-title" *ngIf="management">Management</li>
-            <li class="sidebar-nav-item" *ngIf="management && checkAccessPage(this.currentUser.access.pages, 'page', 'staff-watchdog')">
+            <li class="sidebar-nav-item" *ngIf="management && permissions.checkAccessPage(this.currentUser.access.pages, 'staff-watchdog')">
                 <a class="sidebar-nav-link" href="javascript:;" routerLink="/dashboard/staff/watchdog" routerLinkActive="active">
                     <i class="fal fa-eye sidebar-nav-icon"></i>
                     Watchdog
@@ -52,13 +52,13 @@
                     Support
                 </a>
                 <ul class="sidebar-nav-dropdown-items">
-                    <li class="sidebar-nav-item" *ngIf="checkAccessPage(this.currentUser.access.pages, 'page', 'live-support')">
+                    <li class="sidebar-nav-item" *ngIf="permissions.checkAccessPage(this.currentUser.access.pages, 'live-support')">
                         <a class="sidebar-nav-link" href="https://tawk.to" target="new">
                             <i class="fal fa-headset sidebar-nav-icon"></i>
                             Live Support
                         </a>
                     </li>
-                    <li class="sidebar-nav-item" *ngIf="checkAccessPage(this.currentUser.access.pages, 'page', 'contact-overview')">
+                    <li class="sidebar-nav-item" *ngIf="permissions.checkAccessPage(this.currentUser.access.pages, 'contact-overview')">
                         <a class="sidebar-nav-link" href="javascript:;" routerLink="/dashboard/staff/contact" routerLinkActive="active">
                             <i class="fal fa-inbox sidebar-nav-icon"></i>
                             Contact Requests
@@ -73,13 +73,13 @@
                     Users
                 </a>
                 <ul class="sidebar-nav-dropdown-items">
-                    <li class="sidebar-nav-item" *ngIf="checkAccessPage(this.currentUser.access.pages, 'page', 'users-overview')">
+                    <li class="sidebar-nav-item" *ngIf="permissions.checkAccessPage(this.currentUser.access.pages, 'users-overview')">
                         <a class="sidebar-nav-link" href="javascript:;" routerLink="/dashboard/staff/users" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                             <i class="fal fa-search sidebar-nav-icon"></i>
                             Overview
                         </a>
                     </li>
-                    <li class="sidebar-nav-item" *ngIf="checkAccessPage(this.currentUser.access.pages, 'page', 'users-add')">
+                    <li class="sidebar-nav-item" *ngIf="permissions.checkAccessPage(this.currentUser.access.pages, 'users-add')">
                         <a class="sidebar-nav-link" href="javascript:;" routerLink="/dashboard/staff/users/add" routerLinkActive="active">
                             <i class="fal fa-user-plus sidebar-nav-icon"></i>
                             Add New
@@ -94,13 +94,13 @@
                     Blog Posts
                 </a>
                 <ul class="sidebar-nav-dropdown-items">
-                    <li class="sidebar-nav-item" *ngIf="checkAccessPage(this.currentUser.access.pages, 'page', 'blog-overview')">
+                    <li class="sidebar-nav-item" *ngIf="this.permissions.checkAccessPage(this.currentUser.access.pages, 'blog-overview')">
                         <a class="sidebar-nav-link" href="javascript:;" routerLink="/dashboard/staff/blogs" routerLinkActive="active">
                             <i class="fal fa-search sidebar-nav-icon"></i>
                             Overview
                         </a>
                     </li>
-                    <li class="sidebar-nav-item" *ngIf="checkAccessPage(this.currentUser.access.pages, 'page', 'blog-add')">
+                    <li class="sidebar-nav-item" *ngIf="permissions.checkAccessPage(this.currentUser.access.pages, 'blog-add')">
                         <a class="sidebar-nav-link" href="javascript:;" routerLink="/dashboard/staff/blogs/add" routerLinkActive="active">
                             <i class="fal fa-user-plus sidebar-nav-icon"></i>
                             Add New
