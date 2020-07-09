@@ -4,8 +4,24 @@ import { Injectable } from "@angular/core";
     providedIn: 'root'
 })
 export class Roles {
+    management: any[] =[
+        { role: 'staff' },
+        { role: 'moderator' },
+        { role: 'administrator' },
+        { role: 'developer' }
+    ];
 
-    constructor () { }
+    constructor() { }
+    
+    check (apiRoles: any[], webRoles: any[] = this.management) {
+        const result = webRoles.some(obj1 => {
+          return apiRoles.some(obj2 => {
+            return obj1.role === obj2.role;
+          });
+        });
+    
+        return result;
+    }
 
     icon (role: string): string {
         if (role === "user") {
