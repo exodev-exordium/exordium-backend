@@ -13,7 +13,7 @@ export class Permissions {
     ) { }
 
     checkPermissions(currentUser, page) {   
-        if (this.checkAccessPage(currentUser, 'page', page)) {
+        if (this.checkAccessPage(currentUser, page)) {
             return true;
         } else {
           this.denied();
@@ -21,7 +21,7 @@ export class Permissions {
         }
     }
 
-    checkAccessPage(array, key, value) {
+    checkAccessPage(array, value, key = 'page') {
         return array.some(object => object[key] === value);
     }
 
