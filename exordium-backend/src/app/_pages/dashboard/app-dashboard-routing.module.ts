@@ -15,6 +15,11 @@ import { StaffUsersEditComponent } from './management/users/staff-users-edit/sta
 import { StaffUsersDisableComponent } from './management/users/staff-users-disable/staff-users-disable.component';
 import { StaffUsersAddComponent } from './management/users/staff-users-add/staff-users-add.component';
 
+import { StaffBlogOverviewComponent } from './management/blogs/staff-blog-overview/staff-blog-overview.component';
+import { StaffBlogEditComponent } from './management/blogs/staff-blog-edit/staff-blog-edit.component';
+import { StaffBlogDisableComponent } from './management/blogs/staff-blog-disable/staff-blog-disable.component';
+import { StaffBlogAddComponent } from './management/blogs/staff-blog-add/staff-blog-add.component';
+
 const routes: Routes = [
   {
     path: 'dashboard',
@@ -148,6 +153,67 @@ const routes: Routes = [
         outlet: 'dashroute',
         data: {
           title: 'Add new user'
+        }
+      },
+    ],
+    canActivate: [AuthGuard]
+  },
+
+  {
+    path: 'dashboard/staff/blogs',
+    component: AppDashboardComponent,
+    children: [
+      {
+        path: '',
+        component: StaffBlogOverviewComponent,
+        outlet: 'dashroute',
+        data: {
+          title: 'Blogs Overview'
+        }
+      },
+    ],
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'dashboard/staff/blogs/edit/:id',
+    component: AppDashboardComponent,
+    children: [
+      {
+        path: '',
+        component: StaffBlogEditComponent,
+        outlet: 'dashroute',
+        data: {
+          title: 'Edit Blog'
+        }
+      },
+    ],
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'dashboard/staff/blogs/disable/:id',
+    component: AppDashboardComponent,
+    children: [
+      {
+        path: '',
+        component: StaffBlogDisableComponent,
+        outlet: 'dashroute',
+        data: {
+          title: 'Disable Blog'
+        }
+      },
+    ],
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'dashboard/staff/blogs/add',
+    component: AppDashboardComponent,
+    children: [
+      {
+        path: '',
+        component: StaffBlogAddComponent,
+        outlet: 'dashroute',
+        data: {
+          title: 'Add new blog post'
         }
       },
     ],
