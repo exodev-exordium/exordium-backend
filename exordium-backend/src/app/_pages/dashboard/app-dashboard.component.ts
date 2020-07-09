@@ -17,21 +17,6 @@ export class AppDashboardComponent implements OnInit {
   currentUser: any;
   management: boolean;
 
-  managementRoles: any[] = [
-    {
-      role: 'staff'
-    },
-    {
-      role: 'moderator'
-    },
-    {
-      role: 'administrator'
-    },
-    {
-      role: 'developer'
-    }
-  ];
-
   constructor(
     private authService: AuthService,
     private userService: UserService,
