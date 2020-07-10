@@ -108,7 +108,7 @@
                     Blog Posts
                 </a>
                 <ul class="sidebar-nav-dropdown-items">
-                    <li class="sidebar-nav-item" *ngIf="this.permissions.checkAccessPage(this.currentUser.access.pages, 'blog-overview')">
+                    <li class="sidebar-nav-item" *ngIf="permissions.checkAccessPage(this.currentUser.access.pages, 'blog-overview')">
                         <a class="sidebar-nav-link" href="javascript:;" routerLink="/dashboard/staff/blogs" routerLinkActive="active">
                             <i class="fal fa-search sidebar-nav-icon"></i>
                             Overview
