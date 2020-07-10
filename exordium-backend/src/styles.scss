@@ -53,4 +53,10 @@ app-app-dashboard {
     .badge {
         font-size: 75%;
     }
+
+    // left padding fix
+    .card-header.nav {
+        padding: 2rem 2rem !important;
+    }
+
 }
