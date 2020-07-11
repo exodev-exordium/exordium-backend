@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ColumnMode, SelectionType } from '@swimlane/ngx-datatable';
 
@@ -19,7 +18,7 @@ export class StaffUsersOverviewComponent implements OnInit {
   // User Autentication
   currentUser: any;
 
-  // Contact Emails Table
+  // Users Table
   users: any[];
   loadingIndicator = true;
   selected = [];
