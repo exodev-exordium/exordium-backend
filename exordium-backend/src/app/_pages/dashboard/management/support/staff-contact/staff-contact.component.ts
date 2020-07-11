@@ -48,7 +48,6 @@ export class StaffContactComponent implements OnInit {
 
   onSelect({selected}) {
     console.log(`Select Event: `, selected, this.selected);
-
   }
 
   onView(content) {
