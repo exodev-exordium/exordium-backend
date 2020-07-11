@@ -1,5 +1,5 @@
 <div class="card card-accent-primary">
-    <form>
+    <form name="form" [formGroup]="addBlogForm" (ngSubmit)="onSubmit()">
         <ul class="card-header nav nav-pills mb-3" id="pills-tab" role="tablist">
             <li class="nav-item" role="presentation">
                 <a class="nav-link active" data-toggle="tab" data-tab="#new" href="javascript:;" tab>
@@ -19,19 +19,74 @@
                 <!-- title & subtitle -->
                 <div class="row">
                     <div class="col-md-6">
-                        <label><strong><i class="fas fa-fw fa-text"></i> Title</strong></label>
+
+                        <div class="form-group">
+                            <label>Title *</label>
+    
+                            <div class="input-group mb-3">
+                              <div class="input-group-prepend" 
+                                [ngClass]="{'ng-invalid': f.title.invalid && f.title.dirty,
+                                            'ng-valid': f.title.valid && f.title.dirty}">
+                                <span class="input-group-text">
+                                    <i class="fas fa-fw fa-text"></i>
+                                </span>
+                              </div>
+                              <input name="title" type="text" formControlName="title" placeholder="Post title?" class="form-control" required>
+                            </div>
+                        </div>
+
                     </div>
                     <div class="col-md-6">
-                        <label><strong><i class="fas fa-fw fa-text-size"></i> Subtitle</strong></label>
+
+                        <div class="form-group">
+                            <label>Subtitle *</label>
+    
+                            <div class="input-group mb-3">
+                              <div class="input-group-prepend" 
+                                [ngClass]="{'ng-invalid': f.subtitle.invalid && f.subtitle.dirty,
+                                            'ng-valid': f.subtitle.valid && f.subtitle.dirty}">
+                                <span class="input-group-text">
+                                    <i class="fas fa-fw fa-text-size"></i>
+                                </span>
+                              </div>
+                              <input name="subtitle" type="text" formControlName="subtitle" placeholder="Does the post need a subtitle?" class="form-control">
+                            </div>
+                        </div>
+
                     </div>
                 </div>
 
                 <!-- url -->
-                <label><strong><i class="fas fa-fw fa-link"></i> Post URL</strong></label>
+                <div class="form-group">
+                    <label>Post URL *</label>
+
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend" 
+                        [ngClass]="{'ng-invalid': f.url.invalid && f.url.dirty,
+                                    'ng-valid': f.url.valid && f.url.dirty}">
+                        <span class="input-group-text">
+                            <i class="fas fa-fw fa-align-left"></i>
+                        </span>
+                      </div>
+                      <input name="url" type="text" formControlName="url" placeholder="Post URL (example 'how-to-use-exordium')" class="form-control" required>
+                    </div>
+                </div>
 
                 <!-- short and long body -->
-                <label><strong><i class="fas fa-fw fa-align-left"></i> Full Post</strong></label>
-                <ckeditor [editor]="Editor" data="<p>What do you want to say in your blog post?</p>"></ckeditor>
+                <div class="form-group">
+                    <label>Full Post *</label>
+
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend" 
+                        [ngClass]="{'ng-invalid': f.bodylong.invalid && f.bodylong.dirty,
+                                    'ng-valid': f.bodylong.valid && f.bodylong.dirty}">
+                        <span class="input-group-text">
+                            <i class="fas fa-fw fa-align-left"></i>
+                        </span>
+                      </div>
+                      <ckeditor name="bodylong" formControlName="bodylong" [editor]="Editor" data="<p>What do you want to say in your blog post?</p>" class="form-control-custom" required></ckeditor>
+                    </div>
+                </div>
 
                 <!-- created/current data -->
             </div>
