@@ -49,7 +49,7 @@ export class StaffBlogAddComponent implements OnInit {
     this.userService.getUserDataBasic().subscribe(res => {
       this.currentUser = res.response;
 
-      if (this.permissions.checkPermissions(this.currentUser.access.pages, 'blog-add')) {
+      if (this.permissions.checkPermissions(this.currentUser.access.pages, 'blogs-add')) {
         this.loadingIndicator = false;
       }
     });
