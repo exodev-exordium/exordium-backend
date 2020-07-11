@@ -16,43 +16,19 @@
         </ul>
         <div class="card-body tab-content" id="pills-tabContent">
             <div class="tab-pane fade show active" id="new" role="tabpanel">
-                <!-- title & subtitle -->
-                <div class="row">
-                    <div class="col-md-6">
+                <!-- title -->
+                <div class="form-group">
+                    <label>Title *</label>
 
-                        <div class="form-group">
-                            <label>Title *</label>
-    
-                            <div class="input-group mb-3">
-                              <div class="input-group-prepend" 
-                                [ngClass]="{'ng-invalid': f.title.invalid && f.title.dirty,
-                                            'ng-valid': f.title.valid && f.title.dirty}">
-                                <span class="input-group-text">
-                                    <i class="fas fa-fw fa-text"></i>
-                                </span>
-                              </div>
-                              <input name="title" type="text" formControlName="title" placeholder="Post title?" class="form-control" required>
-                            </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend" 
+                        [ngClass]="{'ng-invalid': f.title.invalid && f.title.dirty,
+                                    'ng-valid': f.title.valid && f.title.dirty}">
+                        <span class="input-group-text">
+                            <i class="fas fa-fw fa-text"></i>
+                        </span>
                         </div>
-
-                    </div>
-                    <div class="col-md-6">
-
-                        <div class="form-group">
-                            <label>Subtitle *</label>
-    
-                            <div class="input-group mb-3">
-                              <div class="input-group-prepend" 
-                                [ngClass]="{'ng-invalid': f.subtitle.invalid && f.subtitle.dirty,
-                                            'ng-valid': f.subtitle.valid && f.subtitle.dirty}">
-                                <span class="input-group-text">
-                                    <i class="fas fa-fw fa-text-size"></i>
-                                </span>
-                              </div>
-                              <input name="subtitle" type="text" formControlName="subtitle" placeholder="Does the post need a subtitle?" class="form-control">
-                            </div>
-                        </div>
-
+                        <input name="title" type="text" formControlName="title" placeholder="Post title?" class="form-control" required>
                     </div>
                 </div>
 
@@ -74,21 +50,24 @@
 
                 <!-- short and long body -->
                 <div class="form-group">
-                    <label>Full Post *</label>
+                    <label>Post *</label>
 
                     <div class="input-group mb-3">
                       <div class="input-group-prepend" 
-                        [ngClass]="{'ng-invalid': f.bodylong.invalid && f.bodylong.dirty,
-                                    'ng-valid': f.bodylong.valid && f.bodylong.dirty}">
+                        [ngClass]="{'ng-invalid': f.body.invalid && f.body.dirty,
+                                    'ng-valid': f.body.valid && f.body.dirty}">
                         <span class="input-group-text">
                             <i class="fas fa-fw fa-align-left"></i>
                         </span>
                       </div>
-                      <ckeditor name="bodylong" formControlName="bodylong" [editor]="Editor" data="<p>What do you want to say in your blog post?</p>" class="form-control-custom" required></ckeditor>
+                      <ckeditor name="body" formControlName="body" [editor]="Editor" [(ngModel)]="model.editorData" class="form-control-custom" required></ckeditor>
                     </div>
                 </div>
 
-                <!-- created/current data -->
+                <!-- recaptcha -->
+                <re-captcha
+                    formControlName="recaptcha"
+                ></re-captcha>
             </div>
             <div class="tab-pane email-app" id="preview" role="tabpanel">
                 
@@ -97,34 +76,20 @@
                     <a class="message" href="javascript:;">
                         <div class="message-details">
                             <div class="message-headers">
-                                <div class="message-headers-from">
-                                    <i class="fas fa-badge-check text-primary"></i>
-                                    Gannicus
+                                <div class="message-headers-from text-capitalize" *ngIf="currentUser">
+                                    <i class="fas fa-badge-check text-primary" *ngIf="currentUser.title === 'Developer'"></i>
+                                    <i class="fas fa-star text-warning" *ngIf="currentUser.title !== 'Developer'"></i>
+                                    {{ currentUser.username }}
                                 </div>
                                 <div class="message-headers-date">
                                     <i class="fas fa-history"></i>
-                                    June 20, 2020 at 3:47 PM
+                                    {{ timeDate | date: 'MMMM d, y h:mm a' }}
                                 </div>
                                 <div class="message-headers-subject mt-2">
-                                    Exordium Backend Development
+                                    {{ f.title.value }}
                                 </div>
                             </div>
-                            <div class="message-body">
-                                <p>
-                                    Hey there, welcome to the Exordium backend website. The backend is still in the works, but it looks like you've got a sneak preview. Have a look around, get a feel for the site and let the development team know of your suggestions and recommendations with the design. 
-                                </p>
-                                <p>
-                                    You will probably run into glitches and bugs; we are most likely aware of it already and will slowly clear them up and fix them as we get closure to completion. 
-                                </p>
-        
-                                <a href="https://github.com/exordium-dev" target="new" class="btn btn-secondary mr-2">
-                                    <i class="fab fa-github"></i>
-                                    Github
-                                </a>
-                                <a href="https://discord.exordium.org" target="new" class="btn btn-dark mr-2">
-                                    <i class="fab fa-discord"></i>
-                                    Discord
-                                </a>
+                            <div class="message-body" [innerHTML]="f.body.value">
                             </div>
                         </div>
                     </a>
@@ -134,7 +99,27 @@
             </div>
         </div>
 
-        <div class="card-footer">
+        <div class="card-footer" *ngIf="currentUser">
+
+            <div class="row">
+                <div class="col-md-6">
+                    <button type="submit" class="btn btn-primary submitSignin">
+                        <i class="fa fa-fw fa-paper-plane"></i>
+                        Add new post
+                    </button>
+                </div>
+                <div class="col-md-6 text-right">
+                    <p class="my-1">
+                        Written by 
+                        <span class="text-bold text-capitalize">
+                            <i class="fas fa-badge-check text-primary" *ngIf="currentUser.title === 'Developer'"></i>
+                            <i class="fas fa-star text-warning" *ngIf="currentUser.title !== 'Developer'"></i>
+                            {{ currentUser.username }}
+                        </span> 
+                        on <i class="fas fa-history"></i> {{ timeDate | date: 'MMMM d, y h:mm a' }}
+                    </p>
+                </div>
+            </div>
 
         </div>
     </form>
