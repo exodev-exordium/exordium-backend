@@ -45,30 +45,27 @@
 </div>
 <div class="row">
     <div class="col-md-8">
-        <div class="card card-body card-accent-primary">
-            <!-- tab control -->
-            <ul class="nav nav-tabs nav-underline nav-underline-primary" role="tablist">
-                <!-- blog overview -->
-                <li class="nav-item">
+        <div class="card card-accent-primary">
+
+            <ul class="card-header nav nav-pills mb-3" id="pills-tab" role="tablist">
+                <li class="nav-item" role="presentation">
                     <a class="nav-link active" data-toggle="tab" data-tab="#blog" href="javascript:;" tab>
-                        <i class="fas fa-blog icon"></i>
+                        <i class="fas fa-fw fa-blog"></i>
+                        Blog
                     </a>
                 </li>
-    
-                <!-- sessions -->
-                <li class="nav-item">
+                <li class="nav-item" role="presentation">
                     <a class="nav-link" data-toggle="tab" data-tab="#sessions" href="javascript:;" tab>
-                        <i class="fas fa-random icon"></i>
+                        <i class="fas fa-fw fa-random"></i>
+                        Sessions
                     </a>
                 </li>
             </ul>
+            <div class="card-body tab-content" id="pills-tabContent" style="height: 500px; position: relative;" perfectScrollbar>
+                <div class="tab-pane email-app fade show active" id="blog" role="tabpanel">
 
-            <!-- tab content -->
-            <div class="tab-content pt-4" style="height: 500px; position: relative;" perfectScrollbar>
-                <div class="tab-pane email-app active" id="blog" role="tabpanel">
-                    
                     <div class="messages">
-
+    
                         <a class="message" href="javascript:;">
                             <div class="message-details">
                                 <div class="message-headers">
@@ -103,49 +100,39 @@
                                 </div>
                             </div>
                         </a>
-
-                        <a class="message mt-4" href="javascript:;">
-                            <div class="message-details">
-                                <div class="message-body">
-                                    <i class="fa fa-spinner fa-spin"></i>
-                                    Click here to check out the blog for more development and news updates.
-                                </div>
-                            </div>
-                        </a>
                         
                     </div>
 
                 </div>
                 <div class="tab-pane" id="sessions" role="tabpanel">
-                    sessions
+                    
+                    Sessions
+    
                 </div>
             </div>
+
         </div>
     </div>
     <div class="col-md-4">
-        <div class="card card-body card-accent-primary">
+        <div class="card card-accent-primary">
 
-            <!-- tab control -->
-            <ul class="nav nav-tabs nav-underline nav-underline-primary" role="tablist">
-                <!-- my account -->
-                <li class="nav-item">
+            <ul class="card-header nav nav-pills mb-3" id="pills-tab" role="tablist">
+                <li class="nav-item" role="presentation">
                     <a class="nav-link active" data-toggle="tab" data-tab="#me" href="javascript:;" tab>
-                        <i class="fas fa-user icon"></i>
+                        <i class="fas fa-fw fa-user"></i>
+                        Gannicus
                     </a>
                 </li>
-    
-                <!-- staff -->
-                <li class="nav-item">
+                <li class="nav-item" role="presentation">
                     <a class="nav-link" data-toggle="tab" data-tab="#staff" href="javascript:;" tab>
-                        <i class="fas fa-users icon"></i>
+                        <i class="fas fa-fw fa-users"></i>
+                        Staff
                     </a>
                 </li>
             </ul>
+            <div class="card-body tab-content" id="pills-tabContent" style="height: 500px; position: relative;" perfectScrollbar>
+                <div class="tab-pane fade show active" id="me" role="tabpanel">
 
-            <!-- tab content -->
-            <div class="tab-content pt-4" style="height: 500px; position: relative;" perfectScrollbar>
-                <div class="tab-pane active" id="me" role="tabpanel">
-                    
                     <div class="d-flex flex-row mb-3">
                         <div class="pr-3">
                             <div class="avatar avatar-lg">
@@ -182,7 +169,7 @@
 
                 </div>
                 <div class="tab-pane" id="staff" role="tabpanel">
-
+                    
                     <h6 class="mb-3">Developers</h6>
                     
                     <div class="d-flex flex-row mb-1">
@@ -286,7 +273,7 @@
                             </span>
                         </div>
                     </div>
-
+    
                 </div>
             </div>
             
