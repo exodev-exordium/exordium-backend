@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
+import { UserService } from 'src/app/__services/user.service';
+
 import { Chart } from 'chart.js';
+import { CBlogsService } from 'src/app/__services/clients/c-blogs.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,9 +19,37 @@ export class DashboardComponent implements OnInit {
   totalBandwidthChart = [];
   totalSessionsChart = [];
 
-  constructor() { }
+  // User Autentication
+  currentUser: any;
+  loadingIndicator = true;
+
+  // Blog Posts
+  posts: any[];
+
+  constructor(
+    private userService: UserService,
+    private cBlogService: CBlogsService
+  ) { }
 
   ngOnInit(): void {
+    // Get User Data
+    this.userService.getUserDataBasic().subscribe(res => {
+      this.currentUser = res.response;
+      this.loadingIndicator = false;
+    });
+
+    // Get Blog Data
+    this.cBlogService.getPosts().subscribe(res => {
+      this.posts = res;
+
+      console.log(this.posts);
+    });
+
+
+
+
+
+    
 
     // placeholder numbers
     this.totalConnections = this.randomNumber();

@@ -64,42 +64,29 @@
             <div class="card-body tab-content" id="pills-tabContent" style="height: 500px; position: relative;" perfectScrollbar>
                 <div class="tab-pane email-app fade show active" id="blog" role="tabpanel">
 
-                    <div class="messages">
-    
-                        <a class="message" href="javascript:;">
-                            <div class="message-details">
-                                <div class="message-headers">
-                                    <div class="message-headers-from">
-                                        <i class="fas fa-badge-check text-primary"></i>
-                                        Gannicus
+                    <div class="messages" *ngIf="posts">
+
+                        <ng-template ngFor let-item [ngForOf]="posts" let-i="index">
+                            <a class="message" href="javascript:;">
+                                <div class="message-details">
+                                    <div class="message-headers">
+                                        <div class="message-headers-from">
+                                            <i class="fas fa-badge-check text-primary"></i>
+                                            Gannicus
+                                        </div>
+                                        <div class="message-headers-date">
+                                            <i class="fas fa-history"></i>
+                                            {{ item.created.createdAt | date: 'MMMM d, y h:mm a' }}
+                                        </div>
+                                        <div class="message-headers-subject mt-2">
+                                            {{ item.title }}
+                                        </div>
                                     </div>
-                                    <div class="message-headers-date">
-                                        <i class="fas fa-history"></i>
-                                        June 20, 2020 at 3:47 PM
-                                    </div>
-                                    <div class="message-headers-subject mt-2">
-                                        Exordium Backend Development
+                                    <div class="message-body" [innerHTML]="item.body">
                                     </div>
                                 </div>
-                                <div class="message-body">
-                                    <p>
-                                        Hey there, welcome to the Exordium backend website. The backend is still in the works, but it looks like you've got a sneak preview. Have a look around, get a feel for the site and let the development team know of your suggestions and recommendations with the design. 
-                                    </p>
-                                    <p>
-                                        You will probably run into glitches and bugs; we are most likely aware of it already and will slowly clear them up and fix them as we get closure to completion. 
-                                    </p>
-            
-                                    <a href="https://github.com/exordium-dev" target="new" class="btn btn-secondary mr-2">
-                                        <i class="fab fa-github"></i>
-                                        Github
-                                    </a>
-                                    <a href="https://discord.exordium.org" target="new" class="btn btn-dark mr-2">
-                                        <i class="fab fa-discord"></i>
-                                        Discord
-                                    </a>
-                                </div>
-                            </div>
-                        </a>
+                            </a>
+                        </ng-template>
                         
                     </div>
 
@@ -118,9 +105,9 @@
 
             <ul class="card-header nav nav-pills mb-3" id="pills-tab" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link active" data-toggle="tab" data-tab="#me" href="javascript:;" tab>
+                    <a class="nav-link text-capitalize active" data-toggle="tab" data-tab="#me" href="javascript:;" *ngIf="currentUser" tab>
                         <i class="fas fa-fw fa-user"></i>
-                        Gannicus
+                        {{ currentUser.username }}
                     </a>
                 </li>
                 <li class="nav-item" role="presentation">
@@ -133,7 +120,7 @@
             <div class="card-body tab-content" id="pills-tabContent" style="height: 500px; position: relative;" perfectScrollbar>
                 <div class="tab-pane fade show active" id="me" role="tabpanel">
 
-                    <div class="d-flex flex-row mb-3">
+                    <div class="d-flex flex-row mb-3" *ngIf="currentUser">
                         <div class="pr-3">
                             <div class="avatar avatar-lg">
                                 <img class="avatar-img" src="https://github.com/FearGannicus.png?size=72"
@@ -141,9 +128,10 @@
                             </div>
                         </div>
                         <div class="flex-grow-1 align-self-center">
-                            <h6 class="mb-0">
-                                <i class="fa fa-badge-check text-primary"></i>
-                                Gannicus
+                            <h6 class="mb-0 text-capitalize">
+                                <i class="fas fa-badge-check text-primary" *ngIf="currentUser.title === 'Developer'"></i>
+                                <i class="fas fa-star text-warning" *ngIf="currentUser.title !== 'Developer'"></i>    
+                                {{ currentUser.username }}
                             </h6>
                             <span class="badge badge-secondary">
                                 <i class="fa fa-fw fa-user"></i>
