@@ -45,6 +45,7 @@ app-app-dashboard {
     .breadcrumb {
         display: inline-flex;
         font-weight: 400;
+        background-color: transparent !important;
     }
 
     .btn {
@@ -65,6 +66,12 @@ app-app-dashboard {
     // left padding fix
     .card-header.nav {
         padding: 2rem 2rem !important;
+    }
+
+    // padding fix navbar
+    .sidebar-nav-item.px-3 {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
     }
 
 }
