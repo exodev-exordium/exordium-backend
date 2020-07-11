@@ -23,6 +23,12 @@ export class StaffBlogAddComponent implements OnInit {
   // Form Controls
   addBlogForm: FormGroup;
   public Editor = ClassicEditor;
+  public model = {
+    editorData: '<p>What do you want to say in your blog post?</p>'
+  };
+
+  // Other Values
+  timeDate: number = Date.now();
 
   constructor(
     private formBuilder: FormBuilder,
@@ -33,9 +39,8 @@ export class StaffBlogAddComponent implements OnInit {
   ) { 
     this.addBlogForm = this.formBuilder.group({
       title: [null, [Validators.required]],
-      subtitle: [null],
       url: [null, Validators.required],
-      bodylong: [null, Validators.required],
+      body: [null, Validators.required],
       recaptcha: [null, Validators.required]
     });
   }
@@ -67,7 +72,6 @@ export class StaffBlogAddComponent implements OnInit {
       }, (err) => {
         this.toastr.success(err[0].msg);
       });
-
     }
 
     setTimeout(() => {
