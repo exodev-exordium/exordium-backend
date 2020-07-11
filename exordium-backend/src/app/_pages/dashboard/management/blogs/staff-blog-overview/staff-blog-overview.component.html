@@ -1,1 +1,104 @@
-<p>staff-blog-overview works!</p>
+<ngx-datatable 
+    class="card shadow-sm material" 
+    [rows]="posts" 
+    [columnMode]="columnMode.force" 
+    [headerHeight]="50" 
+    [footerHeight]="50"
+    [rowHeight]="50" 
+    [scrollbarV]="false"
+    [scrollbarH]="false" 
+    [sorts]="[{prop: 'created.createdAt', dir: 'desc'}]"
+    [selected]="selected"
+    [selectionType]="selectionType.single"
+    (select)="onSelect($event)">
+
+    <ngx-datatable-column name="<i class='fa fa-fw fa-text'></i> Title">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+            {{row.title}}
+        </ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="<i class='fa fa-fw fa-link'></i> URL">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+            <a href="https://exordium.org/#/blog/{{row.url}}" target="new">{{row.url}}</a>
+        </ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="<i class='fa fa-fw fa-comment'></i> Body">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+            {{row.body}}
+        </ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="<i class='fa fa-fw fa-star'></i> Disabled?">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+            <span class="badge badge-primary">
+                {{row.disabled}}
+            </span>
+        </ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="<i class='fa fa-fw fa-globe'></i> Author">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+            <span class="text-capitalize">{{row.created.person}}</span>
+        </ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="" [cellClass]="'datatable-dropdown-cell text-right'">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+
+            <div class="dropdown" navbarDropdown>
+            <a class="btn btn-sm btn-primary dropdown-toggle" href="javascript:;" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Modify
+                <i class="fa fa-fw fa-caret-down"></i>
+            </a>
+            
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="javascript:;" (click)="onView(content)">
+                    <i class="fa fa-fw fa-search"></i>
+                    View
+                </a>
+                <a class="dropdown-item" href="javascript:;" routerLink="/dashboard/staff/blogs/edit/{{row.url}}">
+                    <i class="fa fa-fw fa-cog"></i>
+                    Edit
+                </a>
+                <a class="dropdown-item" href="javascript:;" routerLink="/dashboard/staff/blogs/disable/{{row.url}}">
+                    <i class="fa fa-fw fa-trash"></i>
+                    Disable
+                </a>
+            </div>
+        </div>
+            
+        </ng-template>
+    </ngx-datatable-column>
+
+</ngx-datatable>
+
+
+<!-- Modal -->
+<ng-template #content let-modal>
+    <div *ngFor="let item of selected">
+      <div class="modal-header">
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+  
+        <div class="h3 text-capitalize">
+          {{item.title}}
+          <span class="badge badge-dark float-right">
+            {{item.author}}
+          </span>
+        </div>
+  
+        <hr>
+        
+        <div [innerHtml]="item.body"></div>
+  
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" (click)="modal.close('Close click')">Close</button>
+      </div>
+    </div>
+  </ng-template>
