@@ -53,7 +53,7 @@ export class StaffUsersOverviewComponent implements OnInit {
   onSelect({selected}) {
     console.log(`Select Event: `, selected, this.selected);
     this.selectedRoles = this.selected[0].access.roles.map((item) => {
-        return item.role
+        return item.role;
     });
     console.log('Roles: ', this.selectedRoles);
   }

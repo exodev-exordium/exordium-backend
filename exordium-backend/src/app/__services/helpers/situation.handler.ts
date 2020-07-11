@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 
 // rxjs
@@ -9,7 +9,7 @@ import { throwError } from 'rxjs';
 })
 export class SituationHandler {
 
-    constructor () { }
+    constructor() { }
 
     // ErrorHandler
     handleError(error: HttpErrorResponse) {
@@ -21,7 +21,7 @@ export class SituationHandler {
             // server-side error
             msg = `Error Code: ${error.status}\nMessage: ${error.message}`;
         }
-    
+
         return throwError(msg);
     }
 

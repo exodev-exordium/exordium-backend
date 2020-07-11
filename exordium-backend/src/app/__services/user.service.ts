@@ -26,7 +26,7 @@ export class UserService {
     private router: Router,
     private handler: SituationHandler
   ) { }
-  
+
   // Basic User Data
   getUserDataBasic(): Observable<any> {
     const api = `${this.endpoint}/user/me/basic`;

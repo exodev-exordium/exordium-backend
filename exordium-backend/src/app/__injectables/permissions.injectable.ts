@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
@@ -7,12 +7,12 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class Permissions {
 
-    constructor (
+    constructor(
         private router: Router,
         private toastr: ToastrService
     ) { }
 
-    checkPermissions(currentUser, page) {   
+    checkPermissions(currentUser, page) {
         if (this.checkAccessPage(currentUser, page)) {
             return true;
         } else {
@@ -26,7 +26,7 @@ export class Permissions {
     }
 
     denied(): void {
-        this.toastr.error("You don't have proper permissions to access that page!");
+        this.toastr.error('You don\'t have proper permissions to access that page!');
         this.router.navigate(['dashboard']);
     }
 

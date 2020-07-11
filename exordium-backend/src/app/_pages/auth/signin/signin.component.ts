@@ -49,7 +49,7 @@ export class SigninComponent implements OnInit {
     srcButton.addClass('m-progress');
 
     if (this.signinForm.invalid) {
-      this.toastr.error("Please make sure you fill out all the fields correctly, then try signing in again...");
+      this.toastr.error('Please make sure you fill out all the fields correctly, then try signing in again...');
     } else {
       this.authService.signin(this.signinForm.value).subscribe((res) => {
         this.toastr.success(`You have successfully signed in, ${res.username.charAt(0).toUpperCase() + res.username.slice(1)}!`);
@@ -60,7 +60,7 @@ export class SigninComponent implements OnInit {
           this.router.navigate([`/dashboard`]);
         });
       }, (err) => {
-        this.toastr.error("Your email and password didn't match our records, please check and make sure you entered the right information!");
+        this.toastr.error('Your email and password didn\'t match our records, please check and make sure you entered the right information!');
       });
 
     }

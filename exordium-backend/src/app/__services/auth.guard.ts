@@ -19,13 +19,13 @@ export class AuthGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    
+
     if (this.authService.isSignedIn !== true) {
-      this.toastr.error("You need to be signed in to view that page! Please sign in now.");
+      this.toastr.error('You need to be signed in to view that page! Please sign in now.');
       this.router.navigate(['auth/signin']);
     }
-    
+
     return true;
   }
-  
+
 }

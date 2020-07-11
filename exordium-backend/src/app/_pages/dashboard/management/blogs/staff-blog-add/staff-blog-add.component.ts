@@ -36,7 +36,7 @@ export class StaffBlogAddComponent implements OnInit {
     private mBlogService: MBlogsService,
     private permissions: Permissions,
     private toastr: ToastrService
-  ) { 
+  ) {
     this.addBlogForm = this.formBuilder.group({
       title: [null, [Validators.required]],
       url: [null, Validators.required],

@@ -13,7 +13,7 @@ import { LoadingBarService } from '@ngx-loading-bar/core';
 export class AppComponent implements OnInit {
   loader = this.loadingBar.useRef();
 
-  constructor (
+  constructor(
     private router: Router,
     private titleService: Title,
     private loadingBar: LoadingBarService

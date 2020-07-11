@@ -89,7 +89,7 @@ import { StaffBlogComponent } from './_pages/dashboard/management/dev/staff-blog
     RegisterComponent,
     ForgottenPassComponent,
     LockedComponent,
-    
+
     DashboardComponent,
     BlogComponent,
     NetworkStatusComponent,
@@ -103,7 +103,7 @@ import { StaffBlogComponent } from './_pages/dashboard/management/dev/staff-blog
 
     StaffContactComponent,
     StaffUsersOverviewComponent,
-    StaffUsersEditComponent, 
+    StaffUsersEditComponent,
     StaffUsersDisableComponent,
     StaffUsersAddComponent,
 
@@ -129,7 +129,7 @@ import { StaffBlogComponent } from './_pages/dashboard/management/dev/staff-blog
 
     LoadingBarRouterModule,
     LoadingBarModule,
-    
+
     AppRoutingModule,
     AppAuthModule,
     AppDashboardModule,
@@ -163,7 +163,7 @@ import { StaffBlogComponent } from './_pages/dashboard/management/dev/staff-blog
     },
   ],
   bootstrap: [AppComponent],
-  schemas: [ 
+  schemas: [
     CUSTOM_ELEMENTS_SCHEMA
   ]
 })

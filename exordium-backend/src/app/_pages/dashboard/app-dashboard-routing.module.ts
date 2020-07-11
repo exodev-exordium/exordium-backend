@@ -97,7 +97,7 @@ const routes: Routes = [
     ],
     canActivate: [AuthGuard]
   },
-  
+
   {
     path: 'dashboard/staff/users',
     component: AppDashboardComponent,

@@ -6,7 +6,7 @@ import PerfectScrollbar from 'perfect-scrollbar';
 })
 export class ScrollbarDirective implements OnInit {
 
-    constructor (
+    constructor(
         private elementRef: ElementRef
     ) { }
 

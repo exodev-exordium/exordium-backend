@@ -1,4 +1,4 @@
-import { Directive, ElementRef, HostListener } from "@angular/core";
+import { Directive, ElementRef, HostListener } from '@angular/core';
 import $ from 'jquery';
 
 @Directive({
@@ -6,7 +6,7 @@ import $ from 'jquery';
 })
 export class TabDirective {
 
-    constructor (
+    constructor(
         private elementRef: ElementRef
     ) { }
 
@@ -54,12 +54,12 @@ export class TabDirective {
             // When the animation ends, we clean the classes and resolve the Promise
             function handleAnimationEnd() {
                 element.removeClass(`${prefix}animated ${prefix}faster ${animationName}`);
-            
-                element.off('animationend', handleAnimationEnd)
+
+                element.off('animationend', handleAnimationEnd);
                 resolve('Animation ended');
             }
 
-            //node.addEventListener('animationend', handleAnimationEnd);
-            element.on('animationend', handleAnimationEnd)
-    });
+            // node.addEventListener('animationend', handleAnimationEnd);
+            element.on('animationend', handleAnimationEnd);
+    })
 }

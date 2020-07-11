@@ -28,7 +28,7 @@ export class RegisterComponent implements OnInit {
     private userService: UserService,
     private router: Router,
     private toastr: ToastrService
-  ) { 
+  ) {
     this.registerForm = this.formBuilder.group({
       username: [null, Validators.required],
       email: [null, [Validators.required, Validators.email]],
@@ -65,7 +65,7 @@ export class RegisterComponent implements OnInit {
           this.registerForm.reset();
           this.router.navigate([`auth/signin`]);
 
-          this.toastr.success("Your account has been successfully created, you're free to login now!");
+          this.toastr.success('Your account has been successfully created, you\'re free to login now!');
         }
       },
       (err) => {

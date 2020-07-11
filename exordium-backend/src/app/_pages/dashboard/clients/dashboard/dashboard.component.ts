@@ -49,7 +49,7 @@ export class DashboardComponent implements OnInit {
 
 
 
-    
+
 
     // placeholder numbers
     this.totalConnections = this.randomNumber();
@@ -181,8 +181,8 @@ export class DashboardComponent implements OnInit {
   randomNumberObject(total): Object {
     const n = [];
 
-    for (var i = 0; i < total; i++) {
-      n.push(Math.round(Math.random() * 100))
+    for (let i = 0; i < total; i++) {
+      n.push(Math.round(Math.random() * 100));
     }
 
     return n;

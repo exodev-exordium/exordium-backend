@@ -35,7 +35,7 @@ export class AppDashboardComponent implements OnInit {
     });
 
     const idle = new Idle().whenNotInteractive().within(15).do(() => {
-      // we've been idle for 15 minutes, time to lockout. 
+      // we've been idle for 15 minutes, time to lockout.
       console.log('IDLE');
     }).start();
 
