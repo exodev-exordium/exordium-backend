@@ -1,11 +1,12 @@
 <ngx-datatable 
     class="card shadow-sm material" 
+    style="height: 75vh;"
     [rows]="posts" 
     [columnMode]="columnMode.force" 
     [headerHeight]="50" 
     [footerHeight]="50"
     [rowHeight]="50" 
-    [scrollbarV]="false"
+    [scrollbarV]="true"
     [scrollbarH]="false" 
     [sorts]="[{prop: 'created.createdAt', dir: 'desc'}]"
     [selected]="selected"
@@ -26,21 +27,28 @@
 
     <ngx-datatable-column name="<i class='fa fa-fw fa-comment'></i> Body">
         <ng-template let-row="row" ngx-datatable-cell-template>
-            {{row.body}}
+            <div [innerHTML]="row.body"></div>
         </ng-template>
     </ngx-datatable-column>
 
     <ngx-datatable-column name="<i class='fa fa-fw fa-star'></i> Disabled?">
         <ng-template let-row="row" ngx-datatable-cell-template>
-            <span class="badge badge-primary">
-                {{row.disabled}}
+            <span class="badge badge-danger" *ngIf="row.disabled">
+                <i class="fa fa-fw fa-ban"></i> Disabled
+            </span>
+            <span class="badge badge-primary" *ngIf="!row.disabled">
+                <i class="fa fa-fw fa-check"></i> Visible
             </span>
         </ng-template>
     </ngx-datatable-column>
 
     <ngx-datatable-column name="<i class='fa fa-fw fa-globe'></i> Author">
         <ng-template let-row="row" ngx-datatable-cell-template>
-            <span class="text-capitalize">{{row.created.person}}</span>
+            <span class="text-capitalize">
+                <i class="fas fa-badge-check text-primary" *ngIf="row.author.title === 'Developer'"></i>
+                <i class="fas fa-star text-warning" *ngIf="row.author.title !== 'Developer'"></i>
+                {{row.author.username}}
+            </span>
         </ng-template>
     </ngx-datatable-column>
 
