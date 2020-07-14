@@ -5,7 +5,8 @@ import { AppDashboardComponent } from './app-dashboard.component';
 import { AuthGuard } from 'src/app/__services/auth.guard';
 
 import { DashboardComponent } from './clients/dashboard/dashboard.component';
-import { BlogComponent } from './clients/blog/blog.component';
+import { BlogOverviewComponent } from './clients/blog/blog-overview/blog-overview.component';
+import { BlogArticleComponent } from './clients/blog/blog-article/blog-article.component';
 import { NetworkStatusComponent } from './clients/network-status/network-status.component';
 
 import { StaffContactComponent } from './management/support/staff-contact/staff-contact.component';
@@ -19,6 +20,7 @@ import { StaffBlogOverviewComponent } from './management/blogs/staff-blog-overvi
 import { StaffBlogEditComponent } from './management/blogs/staff-blog-edit/staff-blog-edit.component';
 import { StaffBlogDisableComponent } from './management/blogs/staff-blog-disable/staff-blog-disable.component';
 import { StaffBlogAddComponent } from './management/blogs/staff-blog-add/staff-blog-add.component';
+
 
 const routes: Routes = [
   {
@@ -57,10 +59,25 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: BlogComponent,
+        component: BlogOverviewComponent,
         outlet: 'dashroute',
         data: {
-          title: 'Blog'
+          title: 'Blog Posts'
+        }
+      },
+    ],
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'dashboard/blog/:id',
+    component: AppDashboardComponent,
+    children: [
+      {
+        path: '',
+        component: BlogArticleComponent,
+        outlet: 'dashroute',
+        data: {
+          title: 'Post'
         }
       },
     ],
