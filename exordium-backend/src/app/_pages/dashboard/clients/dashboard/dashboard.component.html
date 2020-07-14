@@ -67,12 +67,13 @@
                     <div class="messages" *ngIf="posts">
 
                         <ng-template ngFor let-item [ngForOf]="posts" let-i="index">
-                            <a class="message" href="javascript:;">
+                            <a class="message" href="javascript:;" routerLink="/dashboard/blog/{{ item.url }}">
                                 <div class="message-details">
                                     <div class="message-headers">
-                                        <div class="message-headers-from">
-                                            <i class="fas fa-badge-check text-primary"></i>
-                                            Gannicus
+                                        <div class="message-headers-from text-capitalize">
+                                            <i class="fas fa-badge-check text-primary" *ngIf="item.author.title === 'Developer'"></i>
+                                            <i class="fas fa-star text-warning" *ngIf="item.author.title !== 'Developer'"></i>
+                                            {{ item.author.username }}
                                         </div>
                                         <div class="message-headers-date">
                                             <i class="fas fa-history"></i>
