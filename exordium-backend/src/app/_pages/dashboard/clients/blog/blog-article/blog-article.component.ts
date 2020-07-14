@@ -8,8 +8,8 @@ import { CBlogsService } from 'src/app/__services/clients/c-blogs.service';
   styleUrls: ['./blog-article.component.scss']
 })
 export class BlogArticleComponent implements OnInit {
-    // Blog Posts
-    post: any[];
+  // Blog Posts
+  post: any[];
 
   constructor(
     private route: ActivatedRoute,
