@@ -47,7 +47,8 @@ import { LockedComponent } from './_pages/auth/locked/locked.component';
 
 // Clients
 import { DashboardComponent } from './_pages/dashboard/clients/dashboard/dashboard.component';
-import { BlogComponent } from './_pages/dashboard/clients/blog/blog.component';
+import { BlogOverviewComponent } from './_pages/dashboard/clients/blog/blog-overview/blog-overview.component';
+import { BlogArticleComponent } from './_pages/dashboard/clients/blog/blog-article/blog-article.component';
 import { NetworkStatusComponent } from './_pages/dashboard/clients/network-status/network-status.component';
 import { UserConnectionsComponent } from './_pages/dashboard/clients/user/user-connections/user-connections.component';
 import { UserLogsComponent } from './_pages/dashboard/clients/user/user-logs/user-logs.component';
@@ -91,7 +92,8 @@ import { StaffBlogComponent } from './_pages/dashboard/management/dev/staff-blog
     LockedComponent,
 
     DashboardComponent,
-    BlogComponent,
+    BlogOverviewComponent,
+    BlogArticleComponent,
     NetworkStatusComponent,
 
     UserConnectionsComponent,

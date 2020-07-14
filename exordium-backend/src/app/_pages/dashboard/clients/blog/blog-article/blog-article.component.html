@@ -1,1 +1,25 @@
-<p>blog-article works!</p>
+<div class="row">
+    <div class="col-12">
+        <div class="card card-accent-primary" *ngIf="post">
+
+            <ng-template ngFor let-item [ngForOf]="post" let-i="index">
+                <div class="card-body">
+                    <h4>{{ item.title }}</h4>
+                    <div [innerHTML]="item.body"></div>
+                </div>
+                <div class="card-footer">
+                    <p class="my-1">
+                        Written by 
+                        <span class="text-bold text-capitalize">
+                            <i class="fas fa-badge-check text-primary" *ngIf="item.author.title === 'Developer'"></i>
+                            <i class="fas fa-star text-warning" *ngIf="item.author.title !== 'Developer'"></i>
+                            {{ item.author.username }}
+                        </span> 
+                        on <i class="fas fa-history"></i> {{ item.created.createdAt | date: 'MMMM d, y h:mm a' }}
+                    </p>
+                </div>
+            </ng-template>
+
+        </div>
+    </div>
+</div>
