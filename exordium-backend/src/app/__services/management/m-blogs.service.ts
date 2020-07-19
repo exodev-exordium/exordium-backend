@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpEventType } from '@angular/common/http';
 
 // rxjs
 import { Observable } from 'rxjs';
@@ -18,6 +18,9 @@ import { Post } from './../model/Blog';
 export class MBlogsService {
   private endpoint = new API().endpoint;
   private headers = new API().headers;
+
+  // upload file progress
+  public fileUploadProgress: number;
 
   constructor(
     private http: HttpClient,
@@ -54,7 +57,28 @@ export class MBlogsService {
   addPost(post: Post): Observable<any> {
     const api = `${this.endpoint}/management/blogs/add`;
 
-    return this.http.post (api, post, { headers: this.headers }).pipe(
+    // Create form data
+    const form = new FormData();
+    
+    // Add other fields to formData
+    Object.keys(post).forEach(key => {
+      form.append(key, post[key]);
+    });
+
+    return this.http.post(api, form, {
+      reportProgress: true,
+      observe: 'events'
+    }).pipe(
+      map((event: HttpEvent<any>) => {
+        if (event.type === HttpEventType.UploadProgress) {
+          this.fileUploadProgress = Math.round(100 * event.loaded / event.total);
+          return { status: 'progress', message: this.fileUploadProgress };
+        }
+
+        if (event.type === HttpEventType.Response) {
+          return event.body;
+        }
+      }),
       catchError(this.handler.handleError)
     );
   }

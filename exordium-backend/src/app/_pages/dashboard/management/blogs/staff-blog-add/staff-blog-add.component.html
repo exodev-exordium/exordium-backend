@@ -47,6 +47,50 @@
                       <input name="url" type="text" formControlName="url" placeholder="Post URL (example 'how-to-use-exordium')" class="form-control" required>
                     </div>
                 </div>
+                
+                <div class="row">
+                    <div class="col-md 6">
+
+                        <div class="form-group">
+                            <label>Subject Type *</label>
+        
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend" 
+                                  [ngClass]="{'ng-invalid': f.type.invalid && f.type.dirty,
+                                              'ng-valid': f.type.valid && f.type.dirty}">
+                                  <span class="input-group-text">
+                                      <i class="fas fa-fw fa-tags"></i>
+                                  </span>
+                                </div>
+                                <ng-select
+                                    formControlName="type"
+                                    class="form-control-custom"
+                                    placeholder="Choose Development for the backend"
+                                    [items]="subjectType"></ng-select>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md 6">
+                        
+                        <div class="form-group">
+                            <label>Cover Photo</label>
+        
+                            <div class="input-group input-group-sm mb-3">
+                                <div class="input-group-prepend"
+                                    [ngClass]="{'ng-invalid': f.cover.invalid && f.cover.dirty,
+                                    'ng-valid': f.cover.valid && f.cover.dirty}">
+                                  <span class="input-group-text">Upload</span>
+                                </div>
+                                <div class="custom-file">
+                                  <input type="file" class="custom-file-input" (change)="onFileSelect($event)">
+                                  <label class="custom-file-label">Choose file</label>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
 
                 <!-- short and long body -->
                 <div class="form-group">
@@ -76,10 +120,10 @@
                     <a class="message" href="javascript:;">
                         <div class="message-details">
                             <div class="message-headers">
-                                <div class="message-headers-from text-capitalize" *ngIf="currentUser">
+                                <div class="message-headers-from" *ngIf="currentUser">
                                     <i class="fas fa-badge-check text-primary" *ngIf="currentUser.title === 'Developer'"></i>
                                     <i class="fas fa-star text-warning" *ngIf="currentUser.title !== 'Developer'"></i>
-                                    {{ currentUser.username }}
+                                    {{ currentUser.username | titlecase }}
                                 </div>
                                 <div class="message-headers-date">
                                     <i class="fas fa-history"></i>
@@ -99,6 +143,8 @@
             </div>
         </div>
 
+        <ngx-loading-bar ref="http"></ngx-loading-bar>
+
         <div class="card-footer" *ngIf="currentUser">
 
             <div class="row">
@@ -111,10 +157,10 @@
                 <div class="col-md-6 text-right">
                     <p class="my-1">
                         Written by 
-                        <span class="text-bold text-capitalize">
+                        <span class="text-bold">
                             <i class="fas fa-badge-check text-primary" *ngIf="currentUser.title === 'Developer'"></i>
                             <i class="fas fa-star text-warning" *ngIf="currentUser.title !== 'Developer'"></i>
-                            {{ currentUser.username }}
+                            {{ currentUser.username | titlecase }}
                         </span> 
                         on <i class="fas fa-history"></i> {{ timeDate | date: 'MMMM d, y h:mm a' }}
                     </p>
