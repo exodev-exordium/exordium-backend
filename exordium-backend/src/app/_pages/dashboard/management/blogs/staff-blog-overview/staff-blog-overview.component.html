@@ -36,18 +36,26 @@
             <span class="badge badge-danger" *ngIf="row.disabled">
                 <i class="fa fa-fw fa-ban"></i> Disabled
             </span>
-            <span class="badge badge-primary" *ngIf="!row.disabled">
+            <span class="badge badge-success" *ngIf="!row.disabled">
                 <i class="fa fa-fw fa-check"></i> Visible
+            </span>
+        </ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="<i class='fa fa-fw fa-tag'></i> Subject">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+            <span class="badge badge-dark">
+                {{ row.type || 'unknown?' | titlecase }}
             </span>
         </ng-template>
     </ngx-datatable-column>
 
     <ngx-datatable-column name="<i class='fa fa-fw fa-globe'></i> Author">
         <ng-template let-row="row" ngx-datatable-cell-template>
-            <span class="text-capitalize">
+            <span>
                 <i class="fas fa-badge-check text-primary" *ngIf="row.author.title === 'Developer'"></i>
                 <i class="fas fa-star text-warning" *ngIf="row.author.title !== 'Developer'"></i>
-                {{row.author.username}}
+                {{row.author.username | titlecase}}
             </span>
         </ng-template>
     </ngx-datatable-column>
@@ -55,27 +63,15 @@
     <ngx-datatable-column name="" [cellClass]="'datatable-dropdown-cell text-right'">
         <ng-template let-row="row" ngx-datatable-cell-template>
 
-            <div class="dropdown" navbarDropdown>
-            <a class="btn btn-sm btn-primary dropdown-toggle" href="javascript:;" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Modify
-                <i class="fa fa-fw fa-caret-down"></i>
+            <a href="javascript:;" class="btn btn-sm btn-primary mr-1" (click)="onView(content)">
+                <i class="fa fa-fw fa-search"></i>
             </a>
-            
-            <div class="dropdown-menu">
-                <a class="dropdown-item" href="javascript:;" (click)="onView(content)">
-                    <i class="fa fa-fw fa-search"></i>
-                    View
-                </a>
-                <a class="dropdown-item" href="javascript:;" routerLink="/dashboard/staff/blogs/edit/{{row.url}}">
-                    <i class="fa fa-fw fa-cog"></i>
-                    Edit
-                </a>
-                <a class="dropdown-item" href="javascript:;" routerLink="/dashboard/staff/blogs/disable/{{row.url}}">
-                    <i class="fa fa-fw fa-trash"></i>
-                    Disable
-                </a>
-            </div>
-        </div>
+            <a href="javascript:;" class="btn btn-sm btn-info mr-1" routerLink="/dashboard/staff/blogs/edit/{{row.url}}">
+                <i class="fa fa-fw fa-edit"></i>
+            </a>
+            <a href="javascript:;" class="btn btn-sm btn-danger" routerLink="/dashboard/staff/blogs/disable/{{row.url}}">
+                <i class="fa fa-fw fa-trash"></i>
+            </a>
             
         </ng-template>
     </ngx-datatable-column>
@@ -86,27 +82,46 @@
 <!-- Modal -->
 <ng-template #content let-modal>
     <div *ngFor="let item of selected">
-      <div class="modal-header">
-        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-  
-        <div class="h3 text-capitalize">
-          {{item.title}}
-          <span class="badge badge-dark float-right">
-            {{item.author}}
-          </span>
+        <div class="modal-header">
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
         </div>
+        <div class="modal-body">
   
-        <hr>
-        
-        <div [innerHtml]="item.body"></div>
+            <div class="h3 text-capitalize">
+            {{item.title}}
+            <span class="badge badge-dark float-right">
+                {{item.type || 'unknown?' | titlecase}}
+            </span>
+            </div>
   
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" (click)="modal.close('Close click')">Close</button>
-      </div>
+            <hr>
+            
+            <div [innerHtml]="item.body"></div>
+
+            <div class="mt-4">
+                <p>
+                    Written by 
+                    <span class="text-bold">
+                        <i class="fas fa-badge-check text-primary" *ngIf="item.author.title === 'Developer'"></i>
+                        <i class="fas fa-star text-warning" *ngIf="item.author.title !== 'Developer'"></i>
+                        {{ item.author.username | titlecase }}
+                    </span> 
+                    on <i class="fas fa-history"></i> {{ item.created.createdAt | date: 'MMMM d, y h:mm a' }}
+                </p>
+            </div>
+  
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-info" routerLink="/dashboard/staff/blogs/edit/{{item.url}}" (click)="modal.close('Close click')">
+                <i class="fa fa-fw fa-edit"></i>
+                Edit
+            </button>
+            <button type="button" class="btn btn-default" (click)="modal.close('Close click')">
+                <i class="fa fa-fw fa-times"></i>
+                Close
+            </button>
+        </div>
     </div>
   </ng-template>
