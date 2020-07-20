@@ -25,7 +25,7 @@ export class CBlogsService {
 
   // Get Users
   getPosts(): Observable<any> {
-    const api = `${this.endpoint}/public/blog`;
+    const api = `${this.endpoint}/public/blog/development`;
     return this.http.get(api, { headers: this.headers }).pipe(
         map(
             (res: Response) => {
@@ -38,7 +38,7 @@ export class CBlogsService {
 
   // Get User
   getPost(id): Observable<any> {
-    const api = `${this.endpoint}/public/blog/${id}`;
+    const api = `${this.endpoint}/public/blog/post/${id}`;
     return this.http.get(api, { headers: this.headers }).pipe(
         map(
             (res: Response) => {
