@@ -29,20 +29,7 @@ export class MBlogsService {
 
   // Get Blogs
   getBlogs(): Observable<any> {
-    const api = `${this.endpoint}/management/blogs`;
-    return this.http.get(api, { headers: this.headers }).pipe(
-        map(
-            (res: Response) => {
-                return res || {};
-            }
-        ),
-        catchError(this.handler.handleError)
-    );
-  }
-
-  // Get Blog Post
-  getPost(id): Observable<any> {
-    const api = `${this.endpoint}/management/blogs/${id}`;
+    const api = `${this.endpoint}/management/blogs/`;
     return this.http.get(api, { headers: this.headers }).pipe(
         map(
             (res: Response) => {
@@ -55,7 +42,7 @@ export class MBlogsService {
 
   // Add new blog post
   addPost(post: Post): Observable<any> {
-    const api = `${this.endpoint}/management/blogs/add`;
+    const api = `${this.endpoint}/management/blogs/`;
 
     // Create form data
     const form = new FormData();
@@ -82,4 +69,33 @@ export class MBlogsService {
       catchError(this.handler.handleError)
     );
   }
+
+  // Get Blog Post
+  getPost(url): Observable<any> {
+    const api = `${this.endpoint}/management/blogs/post/${url}`;
+    return this.http.get(api, { headers: this.headers }).pipe(
+        map(
+            (res: Response) => {
+                return res || {};
+            }
+        ),
+        catchError(this.handler.handleError)
+    );
+  }
+
+  // Edit Blog Post
+  editPost(url, post: Post): Observable<any> {
+    const api = `${this.endpoint}/management/blogs/post/${url}`;
+    return this.http.get(api, {
+      
+    }).pipe(
+        map(
+            (res: Response) => {
+                return res || {};
+            }
+        ),
+        catchError(this.handler.handleError)
+    );
+  }
+
 }
