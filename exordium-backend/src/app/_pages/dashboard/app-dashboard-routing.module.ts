@@ -18,7 +18,6 @@ import { StaffUsersAddComponent } from './management/users/staff-users-add/staff
 
 import { StaffBlogOverviewComponent } from './management/blogs/staff-blog-overview/staff-blog-overview.component';
 import { StaffBlogEditComponent } from './management/blogs/staff-blog-edit/staff-blog-edit.component';
-import { StaffBlogDisableComponent } from './management/blogs/staff-blog-disable/staff-blog-disable.component';
 import { StaffBlogAddComponent } from './management/blogs/staff-blog-add/staff-blog-add.component';
 
 
@@ -201,21 +200,6 @@ const routes: Routes = [
         outlet: 'dashroute',
         data: {
           title: 'Edit Blog'
-        }
-      },
-    ],
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'dashboard/staff/blogs/disable/:id',
-    component: AppDashboardComponent,
-    children: [
-      {
-        path: '',
-        component: StaffBlogDisableComponent,
-        outlet: 'dashroute',
-        data: {
-          title: 'Disable Blog'
         }
       },
     ],

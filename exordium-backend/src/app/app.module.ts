@@ -67,7 +67,6 @@ import { StaffUsersAddComponent } from './_pages/dashboard/management/users/staf
 import { StaffBlogOverviewComponent } from './_pages/dashboard/management/blogs/staff-blog-overview/staff-blog-overview.component';
 import { StaffBlogAddComponent } from './_pages/dashboard/management/blogs/staff-blog-add/staff-blog-add.component';
 import { StaffBlogEditComponent } from './_pages/dashboard/management/blogs/staff-blog-edit/staff-blog-edit.component';
-import { StaffBlogDisableComponent } from './_pages/dashboard/management/blogs/staff-blog-disable/staff-blog-disable.component';
 import { StaffBlogComponent } from './_pages/dashboard/management/dev/staff-blog/staff-blog.component';
 
 
@@ -112,7 +111,6 @@ import { StaffBlogComponent } from './_pages/dashboard/management/dev/staff-blog
     StaffBlogOverviewComponent,
     StaffBlogAddComponent,
     StaffBlogEditComponent,
-    StaffBlogDisableComponent,
     StaffBlogComponent
 
   ],
